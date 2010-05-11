@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>XWiki</web>
+<name>MapMacro</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1252749291000</creationDate>
+<date>1252749291000</date>
+<contentUpdateDate>1252749291000</contentUpdateDate>
+<version>1.0</version>
+<title>Map Macro</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWiki.MapMacro</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<guid>f4b942c6-6ccc-473b-83df-81d85318af80</guid>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>XWiki.map = Class.create();
+XWiki.map.prototype = {
+  /* 
+  ** Load a map centered on the given location
+  */
+  initialize: function(element, location, options) {       
+    if (typeof element == "string") {
+      element = $(element);
+    }
+    if (!options || !typeof options == "Object") {
+      options = {};
+    }
+    var info = options.info ? options.info : "";
+    var zoom = options.zoom ? options.zoom : 15;
+
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': location}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latLng = results[0].geometry.location;
+        
+        // Create map
+        var mapOptions = {
+          zoom: zoom,
+          center: latLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(element, mapOptions);
+
+        // Create marker
+        var marker = new google.maps.Marker({
+          map: map, 
+          position: latLng
+        });
+
+        // Create info window
+        if (this.info != '') {
+          var infoWindow = new google.maps.InfoWindow({
+            content: info
+          });          
+          infoWindow.open(map, marker);
+        }
+      } else {
+        alert("Error: " + status);
+      }
+    });
+  }
+};
+</code></property><property><name>xwikimap</name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<code>
+<name>code</name>
+<number>9</number>
+<prettyName>Macro code</prettyName>
+<rows>20</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<contentDescription>
+<name>contentDescription</name>
+<number>8</number>
+<prettyName>Content description (Not applicable for "No content" type)</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</contentDescription>
+<contentType>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>contentType</name>
+<number>7</number>
+<prettyName>Macro content type</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator>|</separator>
+<separators>|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>Mandatory|Optional|No content</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</contentType>
+<defaultCategory>
+<name>defaultCategory</name>
+<number>4</number>
+<prettyName>Default category</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</defaultCategory>
+<description>
+<name>description</name>
+<number>3</number>
+<prettyName>Macro description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<id>
+<name>id</name>
+<number>1</number>
+<prettyName>Macro id</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</id>
+<name>
+<name>name</name>
+<number>2</number>
+<prettyName>Macro name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<supportsInlineMode>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>supportsInlineMode</name>
+<number>5</number>
+<prettyName>Supports inline mode</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</supportsInlineMode>
+<visibility>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>visibility</name>
+<number>6</number>
+<prettyName>Macro visibility</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator>|</separator>
+<separators>|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>Current User|Current Wiki|Global</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</visibility>
+</class>
+<name>XWiki.MapMacro</name>
+<number>0</number>
+<className>XWiki.WikiMacroClass</className>
+<guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
+<property>
+<code>{{velocity}}
+#set($ok = $xwiki.jsx.use('XWiki.MapMacro'))
+#set($mapId = $util.generateRandomString(5))
+#if("$!context.macro.params.width" == "") 
+  #set($width = "500") 
+#else 
+  #set($width = $context.macro.params.width)
+#end
+#if("$!context.macro.params.height" == "") 
+  #set($height = "400") 
+#else 
+  #set($height = $context.macro.params.height) 
+#end
+{{html}}
+&lt;div id="map${mapId}" style="width:${width}px;height:${height}px"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+ // &lt;![CDATA[
+  Event.observe(window, "load", function(){
+    new XWiki.map("map${mapId}", "$!context.macro.params.location", {
+      #if("$!context.macro.content" != "")info: "$!context.macro.content", #end
+      #if("$!context.macro.params.zoom" != "")zoom: $context.macro.params.zoom #else zoom: 15 #end
+    });
+  });
+ // ]]&gt;
+&lt;/script&gt;
+{{/html}}
+{{/velocity}}</code>
+</property>
+<property>
+<contentDescription>Information to display as legend of the location mapped</contentDescription>
+</property>
+<property>
+<contentType>Optional</contentType>
+</property>
+<property>
+<defaultCategory></defaultCategory>
+</property>
+<property>
+<description>Display an interactive geographical map</description>
+</property>
+<property>
+<id>map</id>
+</property>
+<property>
+<name>Map</name>
+</property>
+<property>
+<supportsInlineMode>0</supportsInlineMode>
+</property>
+<property>
+<visibility>Current User</visibility>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroParameterClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<description>
+<name>description</name>
+<number>2</number>
+<prettyName>Parameter description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<mandatory>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>mandatory</name>
+<number>3</number>
+<prettyName>Parameter mandatory</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</mandatory>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Parameter name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+</class>
+<name>XWiki.MapMacro</name>
+<number>0</number>
+<className>XWiki.WikiMacroParameterClass</className>
+<guid>f085e87f-7bcd-4a1f-bad5-dd351c648b07</guid>
+<property>
+<description>Location to map</description>
+</property>
+<property>
+<mandatory>1</mandatory>
+</property>
+<property>
+<name>location</name>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroParameterClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<description>
+<name>description</name>
+<number>2</number>
+<prettyName>Parameter description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<mandatory>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>mandatory</name>
+<number>3</number>
+<prettyName>Parameter mandatory</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</mandatory>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Parameter name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+</class>
+<name>XWiki.MapMacro</name>
+<number>1</number>
+<className>XWiki.WikiMacroParameterClass</className>
+<guid>887d653f-3ea8-439f-b8a0-9fd0fc45a37d</guid>
+<property>
+<description>Width of the map in pixels.</description>
+</property>
+<property>
+<mandatory>0</mandatory>
+</property>
+<property>
+<name>width</name>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroParameterClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<description>
+<name>description</name>
+<number>2</number>
+<prettyName>Parameter description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<mandatory>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>mandatory</name>
+<number>3</number>
+<prettyName>Parameter mandatory</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</mandatory>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Parameter name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+</class>
+<name>XWiki.MapMacro</name>
+<number>2</number>
+<className>XWiki.WikiMacroParameterClass</className>
+<guid>249ae86b-34d7-400e-9b15-93f5f22ed046</guid>
+<property>
+<description>Height of the map in pixels.</description>
+</property>
+<property>
+<mandatory>0</mandatory>
+</property>
+<property>
+<name>height</name>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroParameterClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<description>
+<name>description</name>
+<number>2</number>
+<prettyName>Parameter description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<mandatory>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>mandatory</name>
+<number>3</number>
+<prettyName>Parameter mandatory</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</mandatory>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Parameter name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+</class>
+<name>XWiki.MapMacro</name>
+<number>3</number>
+<className>XWiki.WikiMacroParameterClass</className>
+<guid>bd25a49c-3648-4492-9114-ca611215e581</guid>
+<property>
+<description>The initial zoom the map will be focused at. Default is 15, which is about the size of a block of houses. </description>
+</property>
+<property>
+<mandatory>0</mandatory>
+</property>
+<property>
+<name>zoom</name>
+</property>
+</object>
+<content>{{box cssClass="floatinginfobox" title="**Contents**"}}
+{{toc/}}
+{{/box}}
+
+= Description =
+
+{{velocity}}
+#set($macro = $doc.getObject('XWiki.WikiMacroClass'))
+$doc.display("description", $macro)
+#if($macro.getProperty("supportsInlineMode").value == 0)
+
+{{box}}This macro does not supports inline mode.{{/box}}
+#end
+{{/velocity}}
+= Usage =
+
+== Content ==
+
+{{velocity}}
+#if("$!macro.getProperty('contentType').value" == "Mandatory")
+{{info}}Content is mandatory{{/info}}
+$doc.display("contentDescription")
+#elseif("$!macro.getProperty('contentType').value" == "Optional")
+{{info}}Content is optional{{/info}}
+$doc.display("contentDescription")
+#else
+No content.
+#end
+#set($params = $doc.getObjects("XWiki.WikiMacroParameterClass"))
+#if($params.size() &gt; 0)
+
+== Parameters ==
+|=Name|=Mandatory|=Description
+#foreach($param in $params)
+|**$doc.display("name", $param)**|$doc.display("mandatory", $param)|$doc.display("description", $param)
+#end
+#end
+
+= Exemples =
+
+== Simple map ==
+{{code}}
+{{map location="10, rue Pernety, France"/}}
+{{/code}}
+{{map location="10, rue Pernety, France"/}}
+
+== Map with parameters ==
+{{code}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+{{/code}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+</content></xwikidoc>
