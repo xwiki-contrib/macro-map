@@ -100,10 +100,10 @@
     <property>
       <code>XWiki.map = Class.create();
 XWiki.map.prototype = {
-  /* 
+  /*
   ** Load a map centered on the given location
   */
-  initialize: function(element, location, options) {       
+  initialize: function(element, location, options) {
     if (typeof element == "string") {
       element = $(element);
     }
@@ -117,7 +117,7 @@ XWiki.map.prototype = {
     geocoder.geocode( { 'address': location}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latLng = results[0].geometry.location;
-        
+
         // Create map
         var mapOptions = {
           zoom: zoom,
@@ -128,7 +128,7 @@ XWiki.map.prototype = {
 
         // Create marker
         var marker = new google.maps.Marker({
-          map: map, 
+          map: map,
           position: latLng
         });
 
@@ -136,7 +136,7 @@ XWiki.map.prototype = {
         if (this.info != '') {
           var infoWindow = new google.maps.InfoWindow({
             content: info
-          });          
+          });
           infoWindow.open(map, marker);
         }
       } else {
@@ -266,15 +266,15 @@ XWiki.map.prototype = {
       <code>{{velocity}}
 #set($ok = $xwiki.jsx.use('XWiki.MapMacro'))
 #set($mapId = $util.generateRandomString(5))
-#if("$!context.macro.params.width" == "") 
-  #set($width = "500") 
-#else 
+#if("$!context.macro.params.width" == "")
+  #set($width = "500")
+#else
   #set($width = $context.macro.params.width)
 #end
-#if("$!context.macro.params.height" == "") 
-  #set($height = "400") 
-#else 
-  #set($height = $context.macro.params.height) 
+#if("$!context.macro.params.height" == "")
+  #set($height = "400")
+#else
+  #set($height = $context.macro.params.height)
 #end
 {{html}}
 &lt;div id="map${mapId}" style="width:${width}px;height:${height}px"&gt;&lt;/div&gt;
