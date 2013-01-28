@@ -103,15 +103,12 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>XWiki.map = Class.create();
-XWiki.map.prototype = {
+      <code>XWiki.map = Class.create({
   /*
   ** Load a map centered on the given location
   */
   initialize: function(element, location, options) {
-    if (typeof element == "string") {
-      element = $(element);
-    }
+    element = $(element);
     if (!options || !typeof options == "Object") {
       options = {};
     }
@@ -149,8 +146,7 @@ XWiki.map.prototype = {
       }
     });
   }
-};
-</code>
+});</code>
     </property>
     <property>
       <name>xwikimap</name>
@@ -278,30 +274,28 @@ XWiki.map.prototype = {
     <guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
     <property>
       <code>{{velocity}}
-#set($ok = $xwiki.jsx.use('XWiki.MapMacro'))
-#set($mapId = $util.generateRandomString(5))
-#if("$!context.macro.params.width" == "")
-  #set($width = "500")
+#set ($discard = $xwiki.jsx.use('XWiki.MapMacro'))
+#set ($mapId = $util.generateRandomString(5))
+#if ("$!xcontext.macro.params.width" == '')
+  #set ($width = '500')
 #else
-  #set($width = $context.macro.params.width)
+  #set ($width = $xcontext.macro.params.width)
 #end
-#if("$!context.macro.params.height" == "")
-  #set($height = "400")
+#if ("$!xcontext.macro.params.height" == '')
+  #set ($height = '400')
 #else
-  #set($height = $context.macro.params.height)
+  #set ($height = $xcontext.macro.params.height)
 #end
 {{html}}
-&lt;div id="map${mapId}" style="width:${width}px;height:${height}px"&gt;&lt;/div&gt;
+&lt;div id="map${mapId}" style="width:${width}px; height:${height}px;"&gt;&lt;/div&gt;
 &lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
- // &lt;![CDATA[
-  Event.observe(window, "load", function(){
-    new XWiki.map("map${mapId}", "$!context.macro.params.location", {
-      #if("$!context.macro.content" != "")info: "$!context.macro.content", #end
-      #if("$!context.macro.params.zoom" != "")zoom: $context.macro.params.zoom #else zoom: 15 #end
+  document.observe("xwiki:dom:loading", function() {
+    new XWiki.map("map${mapId}", "$!xcontext.macro.params.location", {
+      #if ("$!xcontext.macro.content" != "")info: "$!xcontext.macro.content", #end
+      #if ("$!xcontext.macro.params.zoom" != "")zoom: $xcontext.macro.params.zoom #else zoom: 15 #end
     });
   });
- // ]]&gt;
 &lt;/script&gt;
 {{/html}}
 {{/velocity}}</code>
