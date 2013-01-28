@@ -35,6 +35,7 @@
       <validationScript/>
       <cache>
         <cache>0</cache>
+        <disabled>0</disabled>
         <displayType>select</displayType>
         <multiSelect>0</multiSelect>
         <name>cache</name>
@@ -49,6 +50,7 @@
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </cache>
       <code>
+        <disabled>0</disabled>
         <name>code</name>
         <number>2</number>
         <prettyName>Code</prettyName>
@@ -58,6 +60,7 @@
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </code>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>1</number>
         <prettyName>Name</prettyName>
@@ -66,6 +69,7 @@
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
       <parse>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>parse</name>
@@ -76,6 +80,7 @@
       </parse>
       <use>
         <cache>0</cache>
+        <disabled>0</disabled>
         <displayType>select</displayType>
         <multiSelect>0</multiSelect>
         <name>use</name>
@@ -168,6 +173,7 @@ XWiki.map.prototype = {
       <nameField/>
       <validationScript/>
       <code>
+        <disabled>0</disabled>
         <name>code</name>
         <number>9</number>
         <prettyName>Macro code</prettyName>
@@ -177,6 +183,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </code>
       <contentDescription>
+        <disabled>0</disabled>
         <name>contentDescription</name>
         <number>8</number>
         <prettyName>Content description (Not applicable for "No content" type)</prettyName>
@@ -187,6 +194,7 @@ XWiki.map.prototype = {
       </contentDescription>
       <contentType>
         <cache>0</cache>
+        <disabled>0</disabled>
         <displayType>select</displayType>
         <multiSelect>0</multiSelect>
         <name>contentType</name>
@@ -197,10 +205,11 @@ XWiki.map.prototype = {
         <separators>|</separators>
         <size>1</size>
         <unmodifiable>0</unmodifiable>
-        <values>Mandatory|Optional|No content</values>
+        <values>Optional|Mandatory|No content</values>
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </contentType>
       <defaultCategory>
+        <disabled>0</disabled>
         <name>defaultCategory</name>
         <number>4</number>
         <prettyName>Default category</prettyName>
@@ -209,6 +218,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </defaultCategory>
       <description>
+        <disabled>0</disabled>
         <name>description</name>
         <number>3</number>
         <prettyName>Macro description</prettyName>
@@ -218,6 +228,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </description>
       <id>
+        <disabled>0</disabled>
         <name>id</name>
         <number>1</number>
         <prettyName>Macro id</prettyName>
@@ -226,6 +237,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </id>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>2</number>
         <prettyName>Macro name</prettyName>
@@ -234,6 +246,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
       <supportsInlineMode>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>supportsInlineMode</name>
@@ -244,6 +257,7 @@ XWiki.map.prototype = {
       </supportsInlineMode>
       <visibility>
         <cache>0</cache>
+        <disabled>0</disabled>
         <displayType>select</displayType>
         <multiSelect>0</multiSelect>
         <name>visibility</name>
@@ -327,7 +341,17 @@ XWiki.map.prototype = {
       <defaultWeb/>
       <nameField/>
       <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
       <description>
+        <disabled>0</disabled>
         <name>description</name>
         <number>2</number>
         <prettyName>Parameter description</prettyName>
@@ -337,6 +361,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </description>
       <mandatory>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>mandatory</name>
@@ -346,6 +371,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
       </mandatory>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>1</number>
         <prettyName>Parameter name</prettyName>
@@ -358,6 +384,9 @@ XWiki.map.prototype = {
     <number>0</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>f085e87f-7bcd-4a1f-bad5-dd351c648b07</guid>
+    <property>
+      <defaultValue/>
+    </property>
     <property>
       <description>Location to map</description>
     </property>
@@ -378,7 +407,17 @@ XWiki.map.prototype = {
       <defaultWeb/>
       <nameField/>
       <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
       <description>
+        <disabled>0</disabled>
         <name>description</name>
         <number>2</number>
         <prettyName>Parameter description</prettyName>
@@ -388,6 +427,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </description>
       <mandatory>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>mandatory</name>
@@ -397,6 +437,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
       </mandatory>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>1</number>
         <prettyName>Parameter name</prettyName>
@@ -409,6 +450,9 @@ XWiki.map.prototype = {
     <number>1</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>887d653f-3ea8-439f-b8a0-9fd0fc45a37d</guid>
+    <property>
+      <defaultValue/>
+    </property>
     <property>
       <description>Width of the map in pixels.</description>
     </property>
@@ -429,7 +473,17 @@ XWiki.map.prototype = {
       <defaultWeb/>
       <nameField/>
       <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
       <description>
+        <disabled>0</disabled>
         <name>description</name>
         <number>2</number>
         <prettyName>Parameter description</prettyName>
@@ -439,6 +493,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </description>
       <mandatory>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>mandatory</name>
@@ -448,6 +503,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
       </mandatory>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>1</number>
         <prettyName>Parameter name</prettyName>
@@ -460,6 +516,9 @@ XWiki.map.prototype = {
     <number>2</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>249ae86b-34d7-400e-9b15-93f5f22ed046</guid>
+    <property>
+      <defaultValue/>
+    </property>
     <property>
       <description>Height of the map in pixels.</description>
     </property>
@@ -480,7 +539,17 @@ XWiki.map.prototype = {
       <defaultWeb/>
       <nameField/>
       <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
       <description>
+        <disabled>0</disabled>
         <name>description</name>
         <number>2</number>
         <prettyName>Parameter description</prettyName>
@@ -490,6 +559,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </description>
       <mandatory>
+        <disabled>0</disabled>
         <displayFormType>select</displayFormType>
         <displayType>yesno</displayType>
         <name>mandatory</name>
@@ -499,6 +569,7 @@ XWiki.map.prototype = {
         <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
       </mandatory>
       <name>
+        <disabled>0</disabled>
         <name>name</name>
         <number>1</number>
         <prettyName>Parameter name</prettyName>
@@ -511,6 +582,9 @@ XWiki.map.prototype = {
     <number>3</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>bd25a49c-3648-4492-9114-ca611215e581</guid>
+    <property>
+      <defaultValue/>
+    </property>
     <property>
       <description>The initial zoom the map will be focused at. Default is 15, which is about the size of a block of houses. </description>
     </property>
