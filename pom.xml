@@ -31,7 +31,7 @@
   </parent>
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>xwiki-macro-map</artifactId>
-  <version>1.1</version>
+  <version>1.2-SNAPSHOT</version>
   <packaging>xar</packaging>
   <name>Contrib - Macros - Map Macro</name>
   <description>Map Macro for XWiki</description>
@@ -40,7 +40,7 @@
     <connection>scm:git:git://github.com/xwiki-contrib/macro-map.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/macro-map.git</developerConnection>
     <url>https://github.com/xwiki-contrib/macro-map.git/tree/master/</url>
-    <tag>xwiki-macro-map-1.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <build>
