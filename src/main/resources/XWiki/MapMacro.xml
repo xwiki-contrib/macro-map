@@ -609,6 +609,7 @@ $doc.display("description", $macro)
 {{box}}This macro does not supports inline mode.{{/box}}
 #end
 {{/velocity}}
+
 = Usage =
 
 == Content ==
@@ -616,9 +617,11 @@ $doc.display("description", $macro)
 {{velocity}}
 #if("$!macro.getProperty('contentType').value" == "Mandatory")
 {{info}}Content is mandatory{{/info}}
+
 $doc.display("contentDescription")
 #elseif("$!macro.getProperty('contentType').value" == "Optional")
 {{info}}Content is optional{{/info}}
+
 $doc.display("contentDescription")
 #else
 No content.
@@ -639,12 +642,14 @@ No content.
 {{code}}
 {{map location="10, rue Pernety, France"/}}
 {{/code}}
+
 {{map location="10, rue Pernety, France"/}}
 
 == Map with parameters ==
 {{code}}
 {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
 {{/code}}
+
 {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
 </content>
 </xwikidoc>
