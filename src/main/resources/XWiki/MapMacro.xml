@@ -146,6 +146,20 @@
       }
     });
   }
+});
+
+document.observe('xwiki:dom:loading', function() {
+  $$(".xwiki-map-container").each(function(item) {
+    var options = {};
+    if (item.textContent) {
+      options.info = item.textContent;
+    }
+    var zoom = $w(item.className).detect(function(c) { return c.startsWith("zoom-")});
+    if (zoom) {
+      options.zoom = zoom.substring(5) - 0;
+    }
+    new XWiki.map(item, item.title, options);
+  });
 });</code>
     </property>
     <property>
@@ -279,17 +293,12 @@
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
 #set ($zoom = $xcontext.macro.params.zoom)
+(% id="map${mapId}" class="xwiki-map-container zoom-${zoom}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
+(((
+$!context.macro.content
+)))
 {{html}}
-&lt;div id="map${mapId}" style="width:${width}px; height:${height}px;"&gt;&lt;/div&gt;
 &lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-  document.observe("xwiki:dom:loading", function() {
-    new XWiki.map("map${mapId}", "$!xcontext.macro.params.location", {
-      #if ("$!xcontext.macro.content" != "")info: "$!xcontext.macro.content", #end
-      zoom: ${xcontext.macro.params.zoom}
-    });
-  });
-&lt;/script&gt;
 {{/html}}
 {{/velocity}}</code>
     </property>
