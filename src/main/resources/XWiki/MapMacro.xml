@@ -141,7 +141,7 @@
           });
           infoWindow.open(map, marker);
         }
-      } else {
+      } else if (element.hasClassName('errors-show')) {
         alert("Error: " + status);
       }
 
@@ -298,7 +298,8 @@ document.observe('xwiki:dom:loading', function() {
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
 #set ($zoom = $xcontext.macro.params.zoom)
-(% id="map${mapId}" class="xwiki-map-container zoom-${zoom}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
+#set ($errors = $xcontext.macro.params.errors)
+(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
 (((
 $!context.macro.content
 )))
@@ -656,4 +657,70 @@ No content.
 
 {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
 </content>
+  <object>
+    <name>XWiki.MapMacro</name>
+    <number>4</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>24191ad8-8303-49b5-9dcb-86b70321eeab</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+    </class>
+    <property>
+      <defaultValue>show</defaultValue>
+    </property>
+    <property>
+      <description>Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide)</description>
+    </property>
+    <property>
+      <mandatory>0</mandatory>
+    </property>
+    <property>
+      <name>errors</name>
+    </property>
+  </object>
 </xwikidoc>
