@@ -301,7 +301,7 @@ document.observe('xwiki:dom:loading', function() {
 #set ($errors = $xcontext.macro.params.errors)
 (% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
 (((
-$!context.macro.content
+$!xcontext.macro.content
 )))
 #if (!$map_macro_mapApiLoaded)
 {{html}}
