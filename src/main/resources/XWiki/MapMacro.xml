@@ -138,7 +138,20 @@
     geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': location}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        var latLng = results[0].geometry.location;
+        var latLng;
+        // Check if the location type is Geographic Coordinate
+        if(options.locationType == "latlng")
+        {
+        // get the latitude and longitude
+        var latlng = location.split(',');
+        var lat = latlng[0];
+        var lng = latlng[1];
+        latLng = new google.maps.LatLng(lat,lng);
+        }
+        else
+        {
+        latLng = results[0].geometry.location;
+        }
 
         // Create map
         var mapOptions = {
@@ -179,6 +192,8 @@ document.observe('xwiki:dom:loading', function() {
     if (item.textContent) {
       options.info = item.textContent;
     }
+    // get the locationType var : ( latlng / adresse )
+    options.locationType = item.readAttribute("locationType");
     var zoom = $w(item.className).detect(function(c) { return c.startsWith("zoom-")});
     if (zoom) {
       options.zoom = zoom.substring(5) - 0;
@@ -319,7 +334,8 @@ document.observe('xwiki:dom:loading', function() {
 #set ($height = $xcontext.macro.params.height)
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
-(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
+#set ($locationType = $xcontext.macro.params.locationType)
+(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors}" locationType="$locationType"  style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
 (((
 $!xcontext.macro.content
 )))
@@ -676,6 +692,13 @@ No content.
 {{/code}}
 
 {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+
+== Map using geographic coordinate ==
+{{code}}
+{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
+{{/code}}
+
+{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
 </content>
   <object>
     <name>XWiki.MapMacro</name>
@@ -741,6 +764,72 @@ No content.
     </property>
     <property>
       <name>errors</name>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.MapMacro</name>
+    <number>5</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>66546019-9e9e-49d7-90d9-2b9aacedb67f</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+    </class>
+    <property>
+      <defaultValue>adresse</defaultValue>
+    </property>
+    <property>
+      <description>Specify the type of location, possible values : adresse or latlng ( in this case the location should be a geographic coordinate like : 47.156427, 27.576387) </description>
+    </property>
+    <property>
+      <mandatory>0</mandatory>
+    </property>
+    <property>
+      <name>locationType</name>
     </property>
   </object>
 </xwikidoc>
