@@ -75,10 +75,9 @@
   <scm>
     <connection>scm:git:git://github.com/xwiki-contrib/macro-map.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/macro-map.git</developerConnection>
-    <url>https://github.com/xwiki-contrib/macro-map.git/tree/master/</url>
+    <url>https://github.com/xwiki-contrib/macro-map</url>
     <tag>HEAD</tag>
   </scm>
-
   <build>
     <extensions>
       <extension>
@@ -97,7 +96,6 @@
       </plugins>
     </pluginManagement>
   </build>
-
   <distributionManagement>
     <repository>
       <id>xwiki-staging</id>
