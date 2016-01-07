@@ -35,7 +35,43 @@
   <packaging>xar</packaging>
   <name>Map Macro</name>
   <description>Displays a geographical map provided by the Google Maps service, with which users can interact</description>
-
+  <developers>
+    <developer>
+      <id>jvdrean</id>
+      <name>Jean Vincent Drean</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>sdumitriu</id>
+      <name>Sergiu Dumitriu</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>evalica</id>
+      <name>Ecaterina Moraru</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>vrachieru</id>
+      <name>Victor Rachieru</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>gabrielasmeria</id>
+      <name>Gabriela Smeria</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>Medjdoub</id>
+      <name>Zoubir Medjdoub</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+    <developer>
+      <id>gdelhumeau</id>
+      <name>Guillaume Delhumeau</name>
+      <organization>XWiki SAS</organization>
+    </developer>
+  </developers>
   <scm>
     <connection>scm:git:git://github.com/xwiki-contrib/macro-map.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/macro-map.git</developerConnection>
