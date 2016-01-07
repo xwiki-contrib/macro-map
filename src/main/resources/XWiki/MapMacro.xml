@@ -123,90 +123,96 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>XWiki.map = Class.create({
-  /*
-  ** Load a map centered on the given location
-  */
-  initialize: function(element, location, options) {
-    element = $(element);
-    if (!options || !typeof options == "Object") {
-      options = {};
-    }
-    var info = options.info ? options.info : "";
-    var zoom = options.zoom ? options.zoom : 15;
+      <code>require(['https://maps.google.com/maps/api/js'], function() {
+  'use strict';
 
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode( { 'address': location}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        var latLng;
-        // Check if the location type is Geographic Coordinate
-        if(options.locationType == "latlng")
-        {
-        // get the latitude and longitude
-        var latlng = location.split(',');
-        var lat = latlng[0];
-        var lng = latlng[1];
-        latLng = new google.maps.LatLng(lat,lng);
-        }
-        else
-        {
-        latLng = results[0].geometry.location;
-        }
+  XWiki.map = Class.create({
+    /*
+    ** Load a map centered on the given location
+    */
+    initialize: function(element, location, options) {
+      this.element = $(element);
+      // Default option values
+      this.options = (options &amp;&amp; typeof options == 'Object' ) ? options : {};
+      this.options.info         = this.options.info ? this.options.info : '';
+      this.options.zoom         = this.options.zoom ? this.options.zoom : 15;
+      this.options.showErrors   = this.options.showErrors !== undefined ? this.options.showErrors : true;
+      this.options.locationType = this.options.locationType ? this.options.locationType : 'address';
+      // Get the exact geolocalization
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': location }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var latLng;
+          
+          // Check if the location type is Geographic Coordinate
+          if (this.options.locationType == 'latlng') {
+            // get the latitude and longitude
+            var latlng = location.split(',');
+            var lat = latlng[0];
+            var lng = latlng[1];
+            latLng = new google.maps.LatLng(lat,lng);
+          } else {
+            latLng = results[0].geometry.location;
+          }
 
-        // Create map
-        var mapOptions = {
-          zoom: zoom,
-          center: latLng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(element, mapOptions);
+          // Create map
+          var mapOptions = {
+            zoom: this.options.zoom,
+            center: latLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          this.map = new google.maps.Map(this.element, mapOptions);
 
-        // Create marker
-        var marker = new google.maps.Marker({
-          map: map,
-          position: latLng
-        });
-
-        // Create info window
-        if (info != '') {
-          var infoWindow = new google.maps.InfoWindow({
-            content: info
+          // Create marker
+          var marker = new google.maps.Marker({
+            map: this.map,
+            position: latLng
           });
-          infoWindow.open(map, marker);
+
+          // Create info window
+          if (this.options.info != '') {
+            var infoWindow = new google.maps.InfoWindow({
+              content: this.options.info
+            });
+            infoWindow.open(map, marker);
+          }
+        } else if (this.options.showErrors) {
+          new XWiki.widgets.Notification('Error: ' + status, 'error');
         }
-      } else if (element.hasClassName('errors-show')) {
-        alert("Error: " + status);
-      }
 
-      // Fire status event
-      // Status codes: OK, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED, INVALID_REQUEST, UNKNOWN_ERROR
-      // Documentation: https://developers.google.com/maps/documentation/geocoding/#StatusCodes
-      element.fire('GMAPS:' + status);
-    });
-  }
-});
-
-document.observe('xwiki:dom:loading', function() {
-  $$(".xwiki-map-container").each(function(item) {
-    var options = {};
-    if (item.textContent) {
-      options.info = item.textContent;
+        // Fire status event
+        // Status codes: OK, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED, INVALID_REQUEST, UNKNOWN_ERROR
+        // Documentation: https://developers.google.com/maps/documentation/geocoding/#StatusCodes
+        element.fire('GMAPS:' + status);
+      }.bind(this));
     }
-    // get the locationType var : ( latlng / adresse )
-    options.locationType = item.readAttribute("locationType");
-    var zoom = $w(item.className).detect(function(c) { return c.startsWith("zoom-")});
-    if (zoom) {
-      options.zoom = zoom.substring(5) - 0;
-    }
-    new XWiki.map(item, item.title, options);
   });
-});</code>
+
+  var init = function() {
+    $$('.xwiki-map-container').each(function(item) {
+      var options = {};
+      if (item.textContent) {
+        options.info = item.textContent;
+      }
+      var zoom = $w(item.className).detect(function(c) { return c.startsWith('zoom-')});
+      if (zoom) {
+        options.zoom = zoom.substring(5) - 0;
+      }
+      options.locationType = item.hasClassName('locationType-address') ? 'address' : 'latlng';
+      options.showErrors   = item.hasClassName('errors-show');
+      new XWiki.map(item, item.title, options);
+    });
+  };
+  
+  (XWiki &amp;&amp; XWiki.domIsLoaded &amp;&amp; init()) || document.observe('xwiki:dom:loaded', init);
+});
+</code>
     </property>
     <property>
       <name>xwikimap</name>
     </property>
     <property>
-      <parse>1</parse>
+      <parse>0</parse>
     </property>
     <property>
       <use>onDemand</use>
@@ -328,23 +334,22 @@ document.observe('xwiki:dom:loading', function() {
     <guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
     <property>
       <code>{{velocity}}
-#set ($discard = $xwiki.jsx.use('XWiki.MapMacro'))
+#if ($xcontext.action != 'edit')
+  ## The map should not be displayed when the mode is edit, so we don't load the JS in that case.
+  ## Without this check, the macro cannot be added into a page with WYSIWYG editor
+  ## (see http://jira.xwiki.org/browse/MAP-7).
+  #set ($discard = $xwiki.jsx.use('XWiki.MapMacro'))
+#end
 #set ($mapId = $util.generateRandomString(5))
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($locationType = $xcontext.macro.params.locationType)
-(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors}" locationType="$locationType"  style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
+(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors} locationType-${locationType}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
 (((
 $!xcontext.macro.content
 )))
-#if (!$map_macro_mapApiLoaded &amp;&amp; $xcontext.action!='edit')
-{{html}}
-  &lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
-  #set ($map_macro_mapApiLoaded = true)
-{{/html}}
-#end
 {{/velocity}}</code>
     </property>
     <property>
@@ -820,10 +825,10 @@ No content.
       </name>
     </class>
     <property>
-      <defaultValue>adresse</defaultValue>
+      <defaultValue>address</defaultValue>
     </property>
     <property>
-      <description>Specify the type of location, possible values : adresse or latlng ( in this case the location should be a geographic coordinate like : 47.156427, 27.576387) </description>
+      <description>Specify the type of location, possible values : ##address## (default) or ##latlng## ( in this case the location should be a geographic coordinate like : 47.156427, 27.576387) </description>
     </property>
     <property>
       <mandatory>0</mandatory>
