@@ -133,11 +133,11 @@
     initialize: function(element, location, options) {
       this.element = $(element);
       // Default option values
-      this.options = (options &amp;&amp; typeof options == 'Object' ) ? options : {};
-      this.options.info         = this.options.info ? this.options.info : '';
-      this.options.zoom         = this.options.zoom ? this.options.zoom : 15;
-      this.options.showErrors   = this.options.showErrors !== undefined ? this.options.showErrors : true;
-      this.options.locationType = this.options.locationType ? this.options.locationType : 'address';
+      this.options = (options !== undefined &amp;&amp; typeof options == 'object' ) ? options : {};
+      this.options.info         = this.options.info !== undefined         ? this.options.info : '';
+      this.options.zoom         = this.options.zoom !== undefined         ? this.options.zoom : 15;
+      this.options.showErrors   = this.options.showErrors !== undefined   ? this.options.showErrors : true;
+      this.options.locationType = this.options.locationType !== undefined ? this.options.locationType : 'address';
       // Get the exact geolocalization
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode( { 'address': location }, function(results, status) {
@@ -174,7 +174,7 @@
             var infoWindow = new google.maps.InfoWindow({
               content: this.options.info
             });
-            infoWindow.open(map, marker);
+            infoWindow.open(this.map, marker);
           }
         } else if (this.options.showErrors) {
           new XWiki.widgets.Notification('Error: ' + status, 'error');
@@ -183,7 +183,7 @@
         // Fire status event
         // Status codes: OK, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED, INVALID_REQUEST, UNKNOWN_ERROR
         // Documentation: https://developers.google.com/maps/documentation/geocoding/#StatusCodes
-        element.fire('GMAPS:' + status);
+        this.element.fire('GMAPS:' + status);
       }.bind(this));
     }
   });
