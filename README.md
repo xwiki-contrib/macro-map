@@ -1,6 +1,9 @@
-# macro-map
-Map Macro for XWiki, using Google Maps
+# Map Macro
+Displays a geographical map provided by the Google Maps service, with which users can interact.
 
-## More infos
-* [Description and Download](http://extensions.xwiki.org/xwiki/bin/view/Extension/Map+Macro).
-* [Issue Tracker](http://jira.xwiki.org/browse/MAP): if you want to report an issue (please, feel free!).
+* Extension Page: http://extensions.xwiki.org/xwiki/bin/view/Extension/Map+Macro
+* Bug Tracker: http://jira.xwiki.org/browse/MAP.
+* License: LGPL 2.1+.
+
+## Status
+[![Build Status](http://ci.xwiki.org/buildStatus/icon?job=Contrib%20-%20Map%20Macro)](http://ci.xwiki.org/job/Contrib%20-%20Map%20Macro/)
