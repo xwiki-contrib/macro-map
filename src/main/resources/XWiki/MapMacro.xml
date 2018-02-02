@@ -685,23 +685,23 @@ No content.
 = Exemples =
 
 == Simple map ==
-{{code}}
-{{map location="10, rue Pernety, France"/}}
-{{/code}}
+(% class="box"%)((( (% class="code"%)(((
+{{{ {{map location="10, rue Pernety, France"/}} }}}
+))))))
 
 {{map location="10, rue Pernety, France"/}}
 
 == Map with parameters ==
-{{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
-{{/code}}
+(% class="box"%)((( (% class="code"%)(((
+{{{ {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}} }}}
+))))))
 
 {{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
 
 == Map using geographic coordinate ==
-{{code}}
-{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
-{{/code}}
+(% class="box"%)((( (% class="code"%)(((
+{{{ {{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}} }}}
+))))))
 
 {{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
 </content>
