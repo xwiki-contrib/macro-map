@@ -20,30 +20,94 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc>
+<xwikidoc version="1.3" reference="XWiki.MapMacro" locale="">
   <web>XWiki</web>
   <name>MapMacro</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
-  <parent>Main.WebHome</parent>
   <creator>xwiki:XWiki.Admin</creator>
-  <author>xwiki:XWiki.Admin</author>
-  <customClass/>
-  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <creationDate>1252749291000</creationDate>
-  <date>1252749291000</date>
-  <contentUpdateDate>1252749291000</contentUpdateDate>
+  <parent>Main.WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1525702941000</date>
+  <contentUpdateDate>1525702904000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
-  <template/>
-  <defaultTemplate/>
-  <validationScript/>
   <comment/>
   <minorEdit>false</minorEdit>
-  <syntaxId>xwiki/2.0</syntaxId>
+  <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
+  <content>{{box cssClass="floatinginfobox" title="**Contents**"}}
+{{toc/}}
+{{/box}}
+
+= Description =
+
+{{velocity}}
+#set($macro = $doc.getObject('XWiki.WikiMacroClass'))
+$doc.display("description", $macro)
+#if($macro.getProperty("supportsInlineMode").value == 0)
+
+{{box}}This macro does not supports inline mode.{{/box}}
+#end
+{{/velocity}}
+
+= Usage =
+
+== Content ==
+
+{{velocity}}
+#if("$!macro.getProperty('contentType').value" == "Mandatory")
+{{info}}Content is mandatory{{/info}}
+
+$doc.display("contentDescription")
+#elseif("$!macro.getProperty('contentType').value" == "Optional")
+{{info}}Content is optional{{/info}}
+
+$doc.display("contentDescription")
+#else
+No content.
+#end
+#set($params = $doc.getObjects("XWiki.WikiMacroParameterClass"))
+#if($params.size() &gt; 0)
+
+== Parameters ==
+|=Name|=Mandatory|=Description
+#foreach($param in $params)
+|**$doc.display("name", $param)**|$doc.display("mandatory", $param)|$doc.display("description", $param)
+#end
+#end
+
+= Exemples =
+
+== Simple map ==
+{{code}}
+{{map location="10, rue Pernety, France"/}}
+{{/code}}
+
+{{map location="10, rue Pernety, France"/}}
+
+== Map with parameters ==
+{{code}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+{{/code}}
+
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+
+== Map using geographic coordinate ==
+{{code}}
+{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
+{{/code}}
+
+{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
+{{/velocity}}</content>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>0</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>f4b942c6-6ccc-473b-83df-81d85318af80</guid>
     <class>
       <name>XWiki.JavaScriptExtension</name>
       <customClass/>
@@ -63,14 +127,16 @@
         <prettyName>Caching policy</prettyName>
         <relationalStorage>0</relationalStorage>
         <separator> </separator>
-        <separators> ,|</separators>
+        <separators>|, </separators>
         <size>1</size>
         <unmodifiable>0</unmodifiable>
         <values>long|short|default|forbid</values>
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </cache>
       <code>
+        <contenttype>PureText</contenttype>
         <disabled>0</disabled>
+        <editor>PureText</editor>
         <name>code</name>
         <number>2</number>
         <prettyName>Code</prettyName>
@@ -108,17 +174,13 @@
         <prettyName>Use this extension</prettyName>
         <relationalStorage>0</relationalStorage>
         <separator> </separator>
-        <separators> ,|</separators>
+        <separators>|, </separators>
         <size>1</size>
         <unmodifiable>0</unmodifiable>
-        <values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+        <values>currentPage|onDemand|always</values>
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </use>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>0</number>
-    <className>XWiki.JavaScriptExtension</className>
-    <guid>f4b942c6-6ccc-473b-83df-81d85318af80</guid>
     <property>
       <cache>default</cache>
     </property>
@@ -219,6 +281,10 @@
     </property>
   </object>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>0</number>
+    <className>XWiki.WikiMacroClass</className>
+    <guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
     <class>
       <name>XWiki.WikiMacroClass</name>
       <customClass/>
@@ -230,6 +296,7 @@
       <validationScript/>
       <code>
         <disabled>0</disabled>
+        <editor>Text</editor>
         <name>code</name>
         <number>9</number>
         <prettyName>Macro code</prettyName>
@@ -239,7 +306,9 @@
         <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
       </code>
       <contentDescription>
+        <contenttype>PureText</contenttype>
         <disabled>0</disabled>
+        <editor>PureText</editor>
         <name>contentDescription</name>
         <number>8</number>
         <prettyName>Content description (Not applicable for "No content" type)</prettyName>
@@ -274,7 +343,9 @@
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </defaultCategory>
       <description>
+        <contenttype>PureText</contenttype>
         <disabled>0</disabled>
+        <editor>PureText</editor>
         <name>description</name>
         <number>3</number>
         <prettyName>Macro description</prettyName>
@@ -328,10 +399,6 @@
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </visibility>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>0</number>
-    <className>XWiki.WikiMacroClass</className>
-    <guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
     <property>
       <code>{{velocity}}
 #if ($xcontext.action != 'edit')
@@ -378,6 +445,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>0</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>f085e87f-7bcd-4a1f-bad5-dd351c648b07</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -426,10 +497,6 @@ $!xcontext.macro.content
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>0</number>
-    <className>XWiki.WikiMacroParameterClass</className>
-    <guid>f085e87f-7bcd-4a1f-bad5-dd351c648b07</guid>
     <property>
       <defaultValue/>
     </property>
@@ -444,6 +511,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>1</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>887d653f-3ea8-439f-b8a0-9fd0fc45a37d</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -492,10 +563,6 @@ $!xcontext.macro.content
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>1</number>
-    <className>XWiki.WikiMacroParameterClass</className>
-    <guid>887d653f-3ea8-439f-b8a0-9fd0fc45a37d</guid>
     <property>
       <defaultValue>500</defaultValue>
     </property>
@@ -510,6 +577,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>2</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>249ae86b-34d7-400e-9b15-93f5f22ed046</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -558,10 +629,6 @@ $!xcontext.macro.content
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>2</number>
-    <className>XWiki.WikiMacroParameterClass</className>
-    <guid>249ae86b-34d7-400e-9b15-93f5f22ed046</guid>
     <property>
       <defaultValue>400</defaultValue>
     </property>
@@ -576,6 +643,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
+    <name>XWiki.MapMacro</name>
+    <number>3</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>bd25a49c-3648-4492-9114-ca611215e581</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -624,10 +695,6 @@ $!xcontext.macro.content
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </name>
     </class>
-    <name>XWiki.MapMacro</name>
-    <number>3</number>
-    <className>XWiki.WikiMacroParameterClass</className>
-    <guid>bd25a49c-3648-4492-9114-ca611215e581</guid>
     <property>
       <defaultValue>15</defaultValue>
     </property>
@@ -641,70 +708,6 @@ $!xcontext.macro.content
       <name>zoom</name>
     </property>
   </object>
-  <content>{{box cssClass="floatinginfobox" title="**Contents**"}}
-{{toc/}}
-{{/box}}
-
-= Description =
-
-{{velocity}}
-#set($macro = $doc.getObject('XWiki.WikiMacroClass'))
-$doc.display("description", $macro)
-#if($macro.getProperty("supportsInlineMode").value == 0)
-
-{{box}}This macro does not supports inline mode.{{/box}}
-#end
-{{/velocity}}
-
-= Usage =
-
-== Content ==
-
-{{velocity}}
-#if("$!macro.getProperty('contentType').value" == "Mandatory")
-{{info}}Content is mandatory{{/info}}
-
-$doc.display("contentDescription")
-#elseif("$!macro.getProperty('contentType').value" == "Optional")
-{{info}}Content is optional{{/info}}
-
-$doc.display("contentDescription")
-#else
-No content.
-#end
-#set($params = $doc.getObjects("XWiki.WikiMacroParameterClass"))
-#if($params.size() &gt; 0)
-
-== Parameters ==
-|=Name|=Mandatory|=Description
-#foreach($param in $params)
-|**$doc.display("name", $param)**|$doc.display("mandatory", $param)|$doc.display("description", $param)
-#end
-#end
-
-= Exemples =
-
-== Simple map ==
-{{code}}
-{{map location="10, rue Pernety, France"/}}
-{{/code}}
-
-{{map location="10, rue Pernety, France"/}}
-
-== Map with parameters ==
-{{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
-{{/code}}
-
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
-
-== Map using geographic coordinate ==
-{{code}}
-{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
-{{/code}}
-
-{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
-</content>
   <object>
     <name>XWiki.MapMacro</name>
     <number>4</number>
