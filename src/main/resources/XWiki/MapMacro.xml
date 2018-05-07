@@ -31,7 +31,7 @@
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1525702941000</date>
+  <date>1525703271000</date>
   <contentUpdateDate>1525702904000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
@@ -413,7 +413,7 @@ No content.
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($locationType = $xcontext.macro.params.locationType)
-(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors} locationType-${locationType}" style="width:${width}px; height:${height}px;" title="$!{escapetool.javascript($xcontext.macro.params.location)}" %)
+(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors} locationType-${locationType}" style="width:${width}px; height:${height}px;" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
 $!xcontext.macro.content
 )))
