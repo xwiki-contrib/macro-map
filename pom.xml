@@ -35,6 +35,9 @@
   <packaging>xar</packaging>
   <name>Map Macro</name>
   <description>Displays a geographical map provided by the Google Maps service, with which users can interact</description>
+  <properties>
+    <xwiki.issueManagement.jira.id>MAP</xwiki.issueManagement.jira.id>
+  </properties>
   <developers>
     <developer>
       <id>jvdrean</id>
