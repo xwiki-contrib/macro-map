@@ -51,7 +51,11 @@ rendering.macro.map.parameter.zoom.name=Zoom
 rendering.macro.map.parameter.zoom.description=The initial zoom the map will be focused at. Default is 15, which is about the size of a block of houses.
 rendering.macro.map.parameter.errors.name=Errors
 rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
-rendering.macro.map.content.description=Information to display as legend of the location mapped.</content>
+rendering.macro.map.content.description=Information to display as legend of the location mapped.
+rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
+rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
+
+admin.mapmacro=Map Macro</content>
   <object>
     <name>XWiki.MapMacroTranslations</name>
     <number>0</number>
