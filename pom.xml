@@ -31,7 +31,7 @@
   </parent>
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>xwiki-macro-map</artifactId>
-  <version>1.2.5-SNAPSHOT</version>
+  <version>1.2.5</version>
   <packaging>xar</packaging>
   <name>Map Macro</name>
   <description>Displays a geographical map provided by the Google Maps service, with which users can interact</description>
@@ -79,7 +79,7 @@
     <connection>scm:git:git://github.com/xwiki-contrib/macro-map.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/macro-map.git</developerConnection>
     <url>https://github.com/xwiki-contrib/macro-map</url>
-    <tag>HEAD</tag>
+    <tag>xwiki-macro-map-1.2.5</tag>
   </scm>
   <build>
     <extensions>
