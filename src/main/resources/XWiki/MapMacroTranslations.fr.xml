@@ -31,16 +31,16 @@
   <parent>XWiki.MapMacro</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1525702966000</date>
-  <contentUpdateDate>1525702966000</contentUpdateDate>
+  <date>1525702990000</date>
+  <contentUpdateDate>1525702967000</contentUpdateDate>
   <version>1.1</version>
   <title>MapMacro Translations</title>
   <comment/>
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content> XWiki Translation for language fr generated from http://www.l10n.xwiki.org
-rendering.macro.map.content.description=Informations à afficher comme légende de l'emplacement indiqué sur la carte.
+  <content>## XWiki Translation for language fr generated from http://www.l10n.xwiki.org
+rendering.macro.map.content.description=Informations à afficher comme légende de l’emplacement indiqué sur la carte.
 rendering.macro.map.description=Afficher une carte géographique interactive
 rendering.macro.map.name=Carte
 rendering.macro.map.parameter.errors.description=Afficher une popup avec le code de retour quand celui ci est différent de "OK" (valeurs\: show (par défaut) / hide).
@@ -52,5 +52,6 @@ rendering.macro.map.parameter.location.name=Position
 rendering.macro.map.parameter.width.description=Largeur de la carte en pixels.
 rendering.macro.map.parameter.width.name=Largeur
 rendering.macro.map.parameter.zoom.description=Regler le niveau de zoom initial de la carte à. 15 par défaut, ce qui correspond environ à la taille d'un pâté de maisons.
-rendering.macro.map.parameter.zoom.name=Zoom</content>
+rendering.macro.map.parameter.zoom.name=Zoom
+</content>
 </xwikidoc>

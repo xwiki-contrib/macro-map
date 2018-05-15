@@ -20,10 +20,10 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="XWiki.MapMacroTranslations" locale="sk">
+<xwikidoc version="1.3" reference="XWiki.MapMacroTranslations" locale="hr">
   <web>XWiki</web>
   <name>MapMacroTranslations</name>
-  <language>sk</language>
+  <language>hr</language>
   <defaultLanguage/>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
@@ -39,15 +39,19 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language sk generated from http://www.l10n.xwiki.org
-rendering.macro.map.description=Ukázať interaktívnu mapu
-rendering.macro.map.name=Mapa
-rendering.macro.map.parameter.errors.name=Chyby
-rendering.macro.map.parameter.height.description=Výška mapy v pixeloch.
-rendering.macro.map.parameter.height.name=Výška
-rendering.macro.map.parameter.location.name=Umiestnenie
-rendering.macro.map.parameter.width.description=Šírka mapy v pixeloch.
-rendering.macro.map.parameter.width.name=Šírka
-rendering.macro.map.parameter.zoom.name=Zoom
+  <content>## XWiki Translation for language hr generated from http://www.l10n.xwiki.org
+rendering.macro.map.content.description=Informacije za prikazati kao legendu mapirane lokacije.
+rendering.macro.map.description=Prikaži interaktivnu geografsku kartu
+rendering.macro.map.name=Karta
+rendering.macro.map.parameter.errors.description=Prikaži skočni prozor s vraćenim statusnim kôdom kada je on bilo što drugo osim "OK" (vrijednosti\: prikaži(pretpostavljeno)/sakrij).
+rendering.macro.map.parameter.errors.name=Greške
+rendering.macro.map.parameter.height.description=Visina karte u pikselima
+rendering.macro.map.parameter.height.name=Visina
+rendering.macro.map.parameter.location.description=Lokacija za mapirati
+rendering.macro.map.parameter.location.name=Lokacija
+rendering.macro.map.parameter.width.description=Širina karte u pikselima
+rendering.macro.map.parameter.width.name=Širina
+rendering.macro.map.parameter.zoom.description=Početno zumiranje za prikaz karte. Pretpostavljeno je 15, što je otprilike veličine jednog bloka kuća.
+rendering.macro.map.parameter.zoom.name=Zumiranje
 </content>
 </xwikidoc>
