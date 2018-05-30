@@ -39,19 +39,22 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language fa generated from http://www.l10n.xwiki.org
-rendering.macro.map.content.description=اطلاعاتی که به عنوان راهنمای مکان نقشه برداری شده نمایش داده میشود
+  <content>rendering.macro.map.name=نقشه
 rendering.macro.map.description=نقشه جغرافیایی تعاملی را نمایش میدهد
-rendering.macro.map.name=نقشه
-rendering.macro.map.parameter.errors.description=هنگامی که حالتی غیر از حالت مورد تایید رخ میدهد ، یک پنجره شامل کد وضعیت بازگشتی نشان داده میشود. (مقادیر\: نشان داده شود (پیش فرض)/مخفی)
-rendering.macro.map.parameter.errors.name=خطاها
-rendering.macro.map.parameter.height.description=ارتفاع نقشه به پیکسل
-rendering.macro.map.parameter.height.name=ارتفاع
-rendering.macro.map.parameter.location.description=مکان به نقشه
 rendering.macro.map.parameter.location.name=مکان
-rendering.macro.map.parameter.width.description=عرض نقشه به پیکسل
+rendering.macro.map.parameter.location.description=مکان به نقشه
 rendering.macro.map.parameter.width.name=عرض
-rendering.macro.map.parameter.zoom.description=بزرگنمایی اولیه که نقشه بر آن متمرکز است. به صورت پیش فرض 15 میباشد که  تقریبا برابر اندازه یک بلوک از خانه ها میباشد.
+rendering.macro.map.parameter.width.description=عرض نقشه به پیکسل
+rendering.macro.map.parameter.height.name=ارتفاع
+rendering.macro.map.parameter.height.description=ارتفاع نقشه به پیکسل
 rendering.macro.map.parameter.zoom.name=بزرگنمایی
+rendering.macro.map.parameter.zoom.description=بزرگنمایی اولیه که نقشه بر آن متمرکز است. به صورت پیش فرض 15 میباشد که  تقریبا برابر اندازه یک بلوک از خانه ها میباشد.
+rendering.macro.map.parameter.errors.name=خطاها
+rendering.macro.map.parameter.errors.description=هنگامی که حالتی غیر از حالت مورد تایید رخ میدهد ، یک پنجره شامل کد وضعیت بازگشتی نشان داده میشود. (مقادیر\: نشان داده شود (پیش فرض)/مخفی)
+rendering.macro.map.content.description=اطلاعاتی که به عنوان راهنمای مکان نقشه برداری شده نمایش داده میشود
+### Missing: rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
+### Missing: rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
+
+### Missing: admin.mapmacro=Map Macro
 </content>
 </xwikidoc>
