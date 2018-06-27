@@ -31,8 +31,8 @@
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1525703271000</date>
-  <contentUpdateDate>1525702904000</contentUpdateDate>
+  <date>1530104818000</date>
+  <contentUpdateDate>1530104818000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
   <comment/>
@@ -82,212 +82,45 @@ No content.
 
 = Exemples =
 
-== Simple map ==
+== Simple map with default OpenStreetMap tiles==
+
 {{code}}
-{{map location="10, rue Pernety, France"/}}
+{{map location="47.156427, 27.576387" /}}
 {{/code}}
 
-{{map location="10, rue Pernety, France"/}}
+{{map location="47.156427, 27.576387" /}}
+
+== Simple map with custom OpenStreetMap tiles==
+
+{{code}}
+{{map location="47.156427, 27.576387" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
+{{/code}}
+
+{{map location="47.156427, 27.576387" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
+
+== Simple map with address geocoding and Google Maps tiles==
+
+{{code}}
+{{map location="10, rue Pernety, France" locationType="address" library="googlemaps" /}}
+{{/code}}
+
+{{map location="10, rue Pernety, France"  locationType="address" library="googlemaps" /}}
 
 == Map with parameters ==
+
 {{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"  locationType="address" library="googlemaps"}}
+A beautiful street in Paris
+{{/map}}
 {{/code}}
 
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"}}A beautiful street in Paris{{/map}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300" locationType="address" library="googlemaps"}}
+A beautiful street in Paris
+{{/map}}
 
-== Map using geographic coordinate ==
-{{code}}
-{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
-{{/code}}
 
-{{map location="47.156427, 27.576387" width="400" height="300" locationType="latlng"}}Our office is here{{/map}}
-{{/velocity}}</content>
-  <object>
-    <name>XWiki.MapMacro</name>
-    <number>0</number>
-    <className>XWiki.JavaScriptExtension</className>
-    <guid>f4b942c6-6ccc-473b-83df-81d85318af80</guid>
-    <class>
-      <name>XWiki.JavaScriptExtension</name>
-      <customClass/>
-      <customMapping/>
-      <defaultViewSheet/>
-      <defaultEditSheet/>
-      <defaultWeb/>
-      <nameField/>
-      <validationScript/>
-      <cache>
-        <cache>0</cache>
-        <disabled>0</disabled>
-        <displayType>select</displayType>
-        <multiSelect>0</multiSelect>
-        <name>cache</name>
-        <number>5</number>
-        <prettyName>Caching policy</prettyName>
-        <relationalStorage>0</relationalStorage>
-        <separator> </separator>
-        <separators>|, </separators>
-        <size>1</size>
-        <unmodifiable>0</unmodifiable>
-        <values>long|short|default|forbid</values>
-        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
-      </cache>
-      <code>
-        <contenttype>PureText</contenttype>
-        <disabled>0</disabled>
-        <editor>PureText</editor>
-        <name>code</name>
-        <number>2</number>
-        <prettyName>Code</prettyName>
-        <rows>20</rows>
-        <size>50</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
-      </code>
-      <name>
-        <disabled>0</disabled>
-        <name>name</name>
-        <number>1</number>
-        <prettyName>Name</prettyName>
-        <size>30</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-      </name>
-      <parse>
-        <disabled>0</disabled>
-        <displayFormType>select</displayFormType>
-        <displayType>yesno</displayType>
-        <name>parse</name>
-        <number>4</number>
-        <prettyName>Parse content</prettyName>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
-      </parse>
-      <use>
-        <cache>0</cache>
-        <disabled>0</disabled>
-        <displayType>select</displayType>
-        <multiSelect>0</multiSelect>
-        <name>use</name>
-        <number>3</number>
-        <prettyName>Use this extension</prettyName>
-        <relationalStorage>0</relationalStorage>
-        <separator> </separator>
-        <separators>|, </separators>
-        <size>1</size>
-        <unmodifiable>0</unmodifiable>
-        <values>currentPage|onDemand|always</values>
-        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
-      </use>
-    </class>
-    <property>
-      <cache>default</cache>
-    </property>
-    <property>
-      <code>var apiKey = $$('.xwiki-map-container')[0].readAttribute('data-key');
-require(['https://maps.googleapis.com/maps/api/js?key=' + apiKey], function() {
-  'use strict';
-
-  XWiki.map = Class.create({
-    /*
-    ** Load a map centered on the given location
-    */
-    initialize: function(element, location, options) {
-      this.element = $(element);
-      // Default option values
-      this.options = (options !== undefined &amp;&amp; typeof options == 'object' ) ? options : {};
-      this.options.info         = this.options.info !== undefined         ? this.options.info : '';
-      this.options.zoom         = this.options.zoom !== undefined         ? this.options.zoom : 15;
-      this.options.showErrors   = this.options.showErrors !== undefined   ? this.options.showErrors : true;
-      this.options.locationType = this.options.locationType !== undefined ? this.options.locationType : 'address';
-      // Get the exact geolocalization
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode( { 'address': location }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var latLng;
-
-          // Check if the location type is Geographic Coordinate
-          if (this.options.locationType == 'latlng') {
-            // get the latitude and longitude
-            var latlng = location.split(',');
-            var lat = latlng[0];
-            var lng = latlng[1];
-            latLng = new google.maps.LatLng(lat,lng);
-          } else {
-            latLng = results[0].geometry.location;
-          }
-
-          // Create map
-          var mapOptions = {
-            zoom: this.options.zoom,
-            center: latLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          this.map = new google.maps.Map(this.element, mapOptions);
-
-          // Create marker
-          var marker = new google.maps.Marker({
-            map: this.map,
-            position: latLng
-          });
-
-          // Create info window
-          if (this.options.info != '') {
-            var infoWindow = new google.maps.InfoWindow({
-              content: this.options.info
-            });
-            infoWindow.open(this.map, marker);
-          }
-        } else if (this.options.showErrors) {
-          new XWiki.widgets.Notification('Error: ' + status, 'error');
-        }
-
-        // Fire status event
-        // Status codes: OK, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED, INVALID_REQUEST, UNKNOWN_ERROR
-        // Documentation: https://developers.google.com/maps/documentation/geocoding/#StatusCodes
-        this.element.fire('GMAPS:' + status);
-      }.bind(this));
-    }
-  });
-
-  var init = function() {
-    $$('.xwiki-map-container').each(function(item) {
-      var options = {};
-      if (item.textContent) {
-        options.info = item.textContent;
-      }
-      var zoom = $w(item.className).detect(function(c) { return c.startsWith('zoom-')});
-      if (zoom) {
-        options.zoom = zoom.substring(5) - 0;
-      }
-      options.locationType = item.hasClassName('locationType-address') ? 'address' : 'latlng';
-      options.showErrors   = item.hasClassName('errors-show');
-      new XWiki.map(item, item.title, options);
-    });
-  };
-
-  (XWiki &amp;&amp; XWiki.domIsLoaded &amp;&amp; init()) || document.observe('xwiki:dom:loaded', init);
-});
-// Listening for authentication errors/invalid API key. If Google sends an error and prevent maps to be displayed,
-// show an error in the map's place instead.
-function gm_authFailure() {
-  $$('.xwiki-map-container').each(function(item) {
-    item.hide();
-    $('invalidApiKey-' + item.id).removeClassName('hidden');
-  });
-}</code>
-    </property>
-    <property>
-      <name>xwikimap</name>
-    </property>
-    <property>
-      <parse>0</parse>
-    </property>
-    <property>
-      <use>onDemand</use>
-    </property>
-  </object>
+{{/velocity}}
+</content>
   <object>
     <name>XWiki.MapMacro</name>
     <number>0</number>
@@ -409,30 +242,40 @@ function gm_authFailure() {
     </class>
     <property>
       <code>{{velocity}}
-## Get Google API Key
+## Get API Key (e.g. for Google and Mapbox)
 #set ($apiKeyDoc = $xwiki.getDocument('MapMacro.Code.Configuration'))
 #set ($apiKeyObj = $apiKeyDoc.getObject('MapMacro.Code.ConfigurationClass'))
+#set ($apiKey = $apiKeyObj.getValue('apiKey'))
+#set ($library = $xcontext.macro.params.library)
 #if ($xcontext.action != 'edit')
   ## The map should not be displayed when the mode is edit, so we don't load the JS in that case.
   ## Without this check, the macro cannot be added into a page with WYSIWYG editor
   ## (see http://jira.xwiki.org/browse/MAP-7).
-  #set ($discard = $xwiki.jsx.use('XWiki.MapMacro'))
+  #if ($library == "googlemaps")
+    #set ($discard = $xwiki.jsx.use('MapMacro.Code.GoogleMap'))
+  #else
+    #set ($discard = $xwiki.ssx.use('MapMacro.Code.LeafletMap'))
+    #set ($discard = $xwiki.jsx.use('MapMacro.Code.LeafletMap'))
+  #end
 #end
 #set ($mapId = $util.generateRandomString(5))
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
+#set ($tiles = $xcontext.macro.params.tiles)
+#set ($latLng = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
-#set ($mapConfigRef = $services.model.createDocumentReference($xcontext.mainWikiName, 'XWiki', 'XWikiPreferences'))
-#set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=MapMacro'))
-(% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors} locationType-${locationType}" data-key="$apiKeyObj.getValue('apiKey')" style="width:${width}px; height:${height}px;" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
+## TODO: the wiki is either local or global depending on where the macro is installed
+#set ($mapConfigRef = $services.model.createDocumentReference($xcontext.wiki, 'XWiki', 'XWikiPreferences'))
+#set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=mapMacro'))
+(% id="map${mapId}" class="xwiki-map-container errors-${errors} locationType-${locationType}" data-zoom="${zoom}" data-library="$library" data-latlng="$latLng" data-tiles="$tiles" data-key="$!apiKey" style="width:${width}px; height:${height}px;" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
 $!xcontext.macro.content
 )))
 (% id="invalidApiKey-map${mapId}" class="hidden"%)(((
   {{error}}
-    $services.localization.render('rendering.macro.map.apiKey.invalid', ['[[', "&gt;&gt;path:$mapConfigURL]]"])
+    $services.localization.render('rendering.macro.map.apiKey.googlemaps.invalid', ["path:$mapConfigURL"])
   {{/error}}
 )))
 {{/velocity}}</code>
@@ -846,16 +689,148 @@ $!xcontext.macro.content
       </name>
     </class>
     <property>
-      <defaultValue>address</defaultValue>
+      <defaultValue>latlng</defaultValue>
     </property>
     <property>
-      <description>Specify the type of location, possible values : ##address## (default) or ##latlng## ( in this case the location should be a geographic coordinate like : 47.156427, 27.576387) </description>
+      <description>Specify the type of location, possible values : ##latlng## (in this case the location should be a geographic coordinate like: 47.156427, 27.576387) or ##address## (only supported by the Google Maps library for now)</description>
     </property>
     <property>
       <mandatory>0</mandatory>
     </property>
     <property>
       <name>locationType</name>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.MapMacro</name>
+    <number>6</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>16c0eb20-559f-4928-a3b0-304839903d4e</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+    </class>
+    <property>
+      <defaultValue>leaflet</defaultValue>
+    </property>
+    <property>
+      <description>JavaScript library to be used for displaying maps.</description>
+    </property>
+    <property>
+      <mandatory>0</mandatory>
+    </property>
+    <property>
+      <name>library</name>
+    </property>
+  </object>
+  <object>
+    <name>XWiki.MapMacro</name>
+    <number>7</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>7d5ddc8d-cd17-4d71-a34d-e22e034a834e</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+    </class>
+    <property>
+      <defaultValue>https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png</defaultValue>
+    </property>
+    <property>
+      <description>URL scheme of the tile provider. Example: [[https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png]] (default). See also: [[OpenStreetMap tile servers&gt;&gt;https://wiki.openstreetmap.org/wiki/Tile_servers]].</description>
+    </property>
+    <property>
+      <mandatory>0</mandatory>
+    </property>
+    <property>
+      <name>tiles</name>
     </property>
   </object>
 </xwikidoc>
