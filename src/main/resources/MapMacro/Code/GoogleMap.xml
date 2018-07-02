@@ -31,7 +31,7 @@
   <parent>dev:MapMacro.Code.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1530105010000</date>
+  <date>1530526176000</date>
   <contentUpdateDate>1530085982000</contentUpdateDate>
   <version>1.1</version>
   <title/>
@@ -201,8 +201,12 @@ require(['https://maps.googleapis.com/maps/api/js?key=' + apiKey], function() {
         if (zoom) {
           options.zoom = zoom.substring(5) - 0;
         }
-        options.locationType = item.hasClassName('locationType-address') ? 'address' : 'latlng';
-        options.showErrors   = item.hasClassName('errors-show');
+        
+        options.locationType = 'address';
+        var locationType = item.dataset.locationType;
+        if (locationType)
+          options.locationType = locationType;
+        options.showErrors = true;
         new XWiki.googleMap(item, item.title, options);
       }
     });

@@ -31,8 +31,8 @@
   <parent>XWiki.MapMacro</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1525702990000</date>
-  <contentUpdateDate>1525702967000</contentUpdateDate>
+  <date>1530537250000</date>
+  <contentUpdateDate>1530537250000</contentUpdateDate>
   <version>1.1</version>
   <title>MapMacro Translations</title>
   <comment/>
@@ -52,8 +52,8 @@ rendering.macro.map.parameter.zoom.description=The initial zoom the map will be 
 rendering.macro.map.parameter.errors.name=Errors
 rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
 rendering.macro.map.content.description=Information to display as legend of the location mapped.
-rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
-rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
+rendering.macro.map.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a [[Google API key&gt;&gt;{0}]] or a [[Mapbox access token&gt;&gt;{1}]].
+rendering.macro.map.apiKey.googlemaps.invalid=There is no valid Google API key for this macro. Please visit the [[Map Macro section&gt;&gt;{0}]].
 
 admin.mapmacro=Map Macro</content>
   <object>

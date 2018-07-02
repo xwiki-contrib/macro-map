@@ -31,8 +31,8 @@
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1530104818000</date>
-  <contentUpdateDate>1530104818000</contentUpdateDate>
+  <date>1530539203000</date>
+  <contentUpdateDate>1530539203000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
   <comment/>
@@ -85,36 +85,42 @@ No content.
 == Simple map with default OpenStreetMap tiles==
 
 {{code}}
-{{map location="47.156427, 27.576387" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" width="50%" /}}
+
+{{map location="47.156427, 27.576387" width="50%" locationType="latlng" /}}
 {{/code}}
 
-{{map location="47.156427, 27.576387" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" width="50%" /}}
+
+----
+
+{{map location="47.156427, 27.576387"  width="50%" locationType="latlng" /}}
 
 == Simple map with custom OpenStreetMap tiles==
 
 {{code}}
-{{map location="47.156427, 27.576387" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
 {{/code}}
 
-{{map location="47.156427, 27.576387" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" tiles="http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg" /}}
 
 == Simple map with address geocoding and Google Maps tiles==
 
 {{code}}
-{{map location="10, rue Pernety, France" locationType="address" library="googlemaps" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" library="googlemaps" /}}
 {{/code}}
 
-{{map location="10, rue Pernety, France"  locationType="address" library="googlemaps" /}}
+{{map location="35 rue Beaubourg, 75003 Paris"  library="googlemaps" /}}
 
 == Map with parameters ==
 
 {{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300"  locationType="address" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400px" height="300px" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 {{/code}}
 
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300" locationType="address" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="400px" height="300px" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 
@@ -264,12 +270,12 @@ A beautiful street in Paris
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($tiles = $xcontext.macro.params.tiles)
-#set ($latLng = $xcontext.macro.params.location)
+#set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
 ## TODO: the wiki is either local or global depending on where the macro is installed
 #set ($mapConfigRef = $services.model.createDocumentReference($xcontext.wiki, 'XWiki', 'XWikiPreferences'))
 #set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=mapMacro'))
-(% id="map${mapId}" class="xwiki-map-container errors-${errors} locationType-${locationType}" data-zoom="${zoom}" data-library="$library" data-latlng="$latLng" data-tiles="$tiles" data-key="$!apiKey" style="width:${width}px; height:${height}px;" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
+(% id="map${mapId}" class="xwiki-map-container" data-zoom="${zoom}" data-library="$library" data-location="$location" data-locationType="${locationType}" data-tiles="$tiles" data-key="$!apiKey" data-errors="${errors}" style="width:${width}; height:${height};" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
 $!xcontext.macro.content
 )))
@@ -425,10 +431,10 @@ $!xcontext.macro.content
       </name>
     </class>
     <property>
-      <defaultValue>500</defaultValue>
+      <defaultValue>500px</defaultValue>
     </property>
     <property>
-      <description>Width of the map in pixels.</description>
+      <description>Width of the map in pixels or percent.</description>
     </property>
     <property>
       <mandatory>0</mandatory>
@@ -491,10 +497,10 @@ $!xcontext.macro.content
       </name>
     </class>
     <property>
-      <defaultValue>400</defaultValue>
+      <defaultValue>400px</defaultValue>
     </property>
     <property>
-      <description>Height of the map in pixels.</description>
+      <description>Height of the map in pixels or percent.</description>
     </property>
     <property>
       <mandatory>0</mandatory>
@@ -689,10 +695,10 @@ $!xcontext.macro.content
       </name>
     </class>
     <property>
-      <defaultValue>latlng</defaultValue>
+      <defaultValue>address</defaultValue>
     </property>
     <property>
-      <description>Specify the type of location, possible values : ##latlng## (in this case the location should be a geographic coordinate like: 47.156427, 27.576387) or ##address## (only supported by the Google Maps library for now)</description>
+      <description>Specify the type of location, possible values : ##latlng## (in this case the location should be a geographic coordinate like: 47.156427, 27.576387) or ##address##</description>
     </property>
     <property>
       <mandatory>0</mandatory>
