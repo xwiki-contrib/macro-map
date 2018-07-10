@@ -24,7 +24,7 @@
   <web>XWiki</web>
   <name>MapMacroTranslations</name>
   <language>fr</language>
-  <defaultLanguage/>
+  <defaultLanguage>en</defaultLanguage>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1424868107000</creationDate>
