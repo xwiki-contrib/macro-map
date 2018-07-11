@@ -425,7 +425,7 @@ function gm_authFailure() {
 #set ($errors = $xcontext.macro.params.errors)
 #set ($locationType = $xcontext.macro.params.locationType)
 #set ($mapConfigRef = $services.model.createDocumentReference($xcontext.mainWikiName, 'XWiki', 'XWikiPreferences'))
-#set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=MapMacro'))
+#set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=mapMacro'))
 (% id="map${mapId}" class="xwiki-map-container zoom-${zoom} errors-${errors} locationType-${locationType}" data-key="$apiKeyObj.getValue('apiKey')" style="width:${width}px; height:${height}px;" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
 $!xcontext.macro.content
