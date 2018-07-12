@@ -39,7 +39,7 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>{{velocity wiki="true"}}
+  <content>{{velocity}}
 {{info}}
   $services.localization.render('rendering.macro.map.apiKey.info', ['[[','&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]]', '[[','&gt;&gt;path:https://www.mapbox.com/account/access-tokens]]'])
 {{/info}}
