@@ -31,7 +31,7 @@
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1530539203000</date>
+  <date>1531407187000</date>
   <contentUpdateDate>1530539203000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
@@ -281,7 +281,7 @@ $!xcontext.macro.content
 )))
 (% id="invalidApiKey-map${mapId}" class="hidden"%)(((
   {{error}}
-    $services.localization.render('rendering.macro.map.apiKey.googlemaps.invalid', ["path:$mapConfigURL"])
+    $services.localization.render('rendering.macro.map.apiKey.googlemaps.invalid', ['[[',"&gt;&gt;path:$mapConfigURL]]"])
   {{/error}}
 )))
 {{/velocity}}</code>

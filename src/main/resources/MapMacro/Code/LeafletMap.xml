@@ -31,7 +31,7 @@
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1530539951000</date>
+  <date>1531407564000</date>
   <contentUpdateDate>1530086149000</contentUpdateDate>
   <version>1.1</version>
   <title>LeafletMap</title>
@@ -161,9 +161,9 @@
       this.element = $(element);
       // Default option values
       this.options = (options !== undefined &amp;&amp; typeof options == 'object' ) ? options : {};
-      var zoom         = this.options.zoom !== undefined         ? this.options.zoom : 14;
+      var zoom = this.options.zoom !== undefined ? this.options.zoom : 14;
       //this.options.location       = this.options.location !== undefined       ? this.options.location.split(','): [48.864716, 2.349014];
-      var mapId        = this.options.mapId !== undefined        ? this.options.mapId : 'map-id';
+      var mapId = this.options.mapId !== undefined ? this.options.mapId : 'map-id';
       var tiles = this.options.tiles;
       var locationType = this.options.locationType ? this.options.locationType.toLowerCase() : 'address';
       var that = this;
@@ -209,7 +209,6 @@
         var url = "https://www.openstreetmap.org/directions?engine=graphhopper_foot&amp;to="+ latLng+ "#map=19/"+ latLng[0]+"/"+ latLng[1];
         window.open(url,'_blank');
       }
-      
     }
   });
 
