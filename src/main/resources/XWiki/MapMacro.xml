@@ -27,12 +27,12 @@
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
-  <creationDate>1252749291000</creationDate>
+  <creationDate>1531488117000</creationDate>
   <parent>Main.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1525703271000</date>
-  <contentUpdateDate>1525702904000</contentUpdateDate>
+  <date>1531492959000</date>
+  <contentUpdateDate>1531488117000</contentUpdateDate>
   <version>1.1</version>
   <title>Map Macro</title>
   <comment/>
@@ -278,7 +278,12 @@ A beautiful street in Paris
 #set ($tiles = $xcontext.macro.params.tiles)
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
-#set ($mapConfigRef = $services.model.createDocumentReference($xcontext.mainWikiName, 'XWiki', 'XWikiPreferences'))
+#if ($xwiki.exists("XWiki.MapMacro"))
+  #set ($wiki = $xcontext.wiki)
+#else
+  #set ($wiki = $xcontext.mainWikiName)
+#end
+#set ($mapConfigRef = $services.model.createDocumentReference($wiki, 'XWiki', 'XWikiPreferences'))
 #set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=mapMacro'))
 (% id="map${mapId}" class="xwiki-map-container" data-zoom="${zoom}" data-library="$library" data-location="$location" data-locationType="${locationType}" data-tiles="$tiles" data-key="$!apiKey" data-errors="${errors}" style="width:${width}; height:${height};" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
