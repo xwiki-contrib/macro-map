@@ -43,7 +43,7 @@
   <attachment>
     <filename>marker-icon-2x.png</filename>
     <mimetype>image/png</mimetype>
-    <author>xwiki:XWiki.slauriere</author>
+    <author>xwiki:XWiki.Admin</author>
     <date>1530093571000</date>
     <version>1.1</version>
     <comment/>
@@ -53,7 +53,7 @@
   <attachment>
     <filename>marker-icon.png</filename>
     <mimetype>image/png</mimetype>
-    <author>xwiki:XWiki.slauriere</author>
+    <author>xwiki:XWiki.Admin</author>
     <date>1530093570000</date>
     <version>1.1</version>
     <comment/>
@@ -63,7 +63,7 @@
   <attachment>
     <filename>marker-shadow.png</filename>
     <mimetype>image/png</mimetype>
-    <author>xwiki:XWiki.slauriere</author>
+    <author>xwiki:XWiki.Admin</author>
     <date>1530093571000</date>
     <version>1.1</version>
     <comment/>
