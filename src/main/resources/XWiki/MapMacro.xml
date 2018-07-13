@@ -267,6 +267,12 @@ A beautiful street in Paris
 #set ($mapId = $util.generateRandomString(5))
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
+#if ($width.indexOf('px') &lt; 0)
+  #set ($width = "${width}px")
+#end
+#if ($height.indexOf('px') &lt; 0)
+  #set ($height = "${height}px")
+#end
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($tiles = $xcontext.macro.params.tiles)
