@@ -62,7 +62,6 @@
       <apiKey>
         <customDisplay/>
         <disabled>0</disabled>
-        <hint/>
         <name>apiKey</name>
         <number>1</number>
         <picker>0</picker>
@@ -108,7 +107,7 @@
       <codeToExecute>
         <customDisplay/>
         <disabled>0</disabled>
-        <editor>Text</editor>
+        <editor>---</editor>
         <name>codeToExecute</name>
         <number>7</number>
         <picker>0</picker>

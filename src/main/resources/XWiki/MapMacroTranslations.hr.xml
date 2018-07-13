@@ -24,7 +24,7 @@
   <web>XWiki</web>
   <name>MapMacroTranslations</name>
   <language>hr</language>
-  <defaultLanguage/>
+  <defaultLanguage>en</defaultLanguage>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1424868107000</creationDate>
@@ -39,19 +39,22 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language hr generated from http://www.l10n.xwiki.org
-rendering.macro.map.content.description=Informacije za prikazati kao legendu mapirane lokacije.
+  <content>rendering.macro.map.name=Karta
 rendering.macro.map.description=Prikaži interaktivnu geografsku kartu
-rendering.macro.map.name=Karta
-rendering.macro.map.parameter.errors.description=Prikaži skočni prozor s vraćenim statusnim kôdom kada je on bilo što drugo osim "OK" (vrijednosti\: prikaži(pretpostavljeno)/sakrij).
-rendering.macro.map.parameter.errors.name=Greške
-rendering.macro.map.parameter.height.description=Visina karte u pikselima
-rendering.macro.map.parameter.height.name=Visina
-rendering.macro.map.parameter.location.description=Lokacija za mapirati
 rendering.macro.map.parameter.location.name=Lokacija
-rendering.macro.map.parameter.width.description=Širina karte u pikselima
+rendering.macro.map.parameter.location.description=Lokacija za mapirati
 rendering.macro.map.parameter.width.name=Širina
-rendering.macro.map.parameter.zoom.description=Početno zumiranje za prikaz karte. Pretpostavljeno je 15, što je otprilike veličine jednog bloka kuća.
+rendering.macro.map.parameter.width.description=Širina karte u pikselima
+rendering.macro.map.parameter.height.name=Visina
+rendering.macro.map.parameter.height.description=Visina karte u pikselima
 rendering.macro.map.parameter.zoom.name=Zumiranje
+rendering.macro.map.parameter.zoom.description=Početno zumiranje za prikaz karte. Pretpostavljeno je 15, što je otprilike veličine jednog bloka kuća.
+rendering.macro.map.parameter.errors.name=Greške
+rendering.macro.map.parameter.errors.description=Prikaži skočni prozor s vraćenim statusnim kôdom kada je on bilo što drugo osim "OK" (vrijednosti\: prikaži(pretpostavljeno)/sakrij).
+rendering.macro.map.content.description=Informacije za prikazati kao legendu mapirane lokacije.
+### Missing: rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
+### Missing: rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
+
+### Missing: admin.mapmacro=Map Macro
 </content>
 </xwikidoc>

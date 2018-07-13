@@ -272,8 +272,8 @@ A beautiful street in Paris
 #set ($tiles = $xcontext.macro.params.tiles)
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
-## TODO: the wiki is either local or global depending on where the macro is installed
 #set ($mapConfigRef = $services.model.createDocumentReference($xcontext.wiki, 'XWiki', 'XWikiPreferences'))
+#set ($mapConfigRef = $services.model.createDocumentReference($xcontext.mainWikiName, 'XWiki', 'XWikiPreferences'))
 #set ($mapConfigURL = $xwiki.getURL($mapConfigRef, 'admin', 'editor=globaladmin&amp;section=mapMacro'))
 (% id="map${mapId}" class="xwiki-map-container" data-zoom="${zoom}" data-library="$library" data-location="$location" data-locationType="${locationType}" data-tiles="$tiles" data-key="$!apiKey" data-errors="${errors}" style="width:${width}; height:${height};" title="$!services.rendering.escape($xcontext.macro.params.location, 'xwiki/2.1')" %)
 (((
