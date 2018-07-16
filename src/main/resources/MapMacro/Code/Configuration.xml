@@ -41,7 +41,7 @@
   <hidden>true</hidden>
   <content>{{velocity}}
 {{info}}
-  $services.localization.render('rendering.macro.map.apiKey.info', ['[[', '&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]]'])
+  $services.localization.render('rendering.macro.map.apiKey.info', ['[[','&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]]', '[[','&gt;&gt;path:https://www.mapbox.com/account/access-tokens]]'])
 {{/info}}
 {{/velocity}}
 </content>
@@ -65,7 +65,7 @@
         <name>apiKey</name>
         <number>1</number>
         <picker>0</picker>
-        <prettyName>API Key</prettyName>
+        <prettyName>API key or access token</prettyName>
         <size>30</size>
         <unmodifiable>0</unmodifiable>
         <validationMessage/>
