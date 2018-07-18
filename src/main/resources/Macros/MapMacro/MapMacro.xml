@@ -115,12 +115,12 @@ No content.
 == Map with parameters ==
 
 {{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="500px" height="400px" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="500" height="400" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 {{/code}}
 
-{{map location="Rue des Thermopyles, 75014 Paris" width="500px" height="400px" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="500" height="400" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 
@@ -267,6 +267,12 @@ A beautiful street in Paris
 #set ($mapId = $util.generateRandomString(5))
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
+#if ($width.indexOf('px') &lt; 0 &amp;&amp; $width.indexOf('%') &lt; 0)
+  #set ($width = "${width}px")
+#end
+#if ($height.indexOf('px') &lt; 0 &amp;&amp; $height.indexOf('%') &lt; 0)
+  #set ($height = "${height}px")
+#end
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($tiles = $xcontext.macro.params.tiles)
