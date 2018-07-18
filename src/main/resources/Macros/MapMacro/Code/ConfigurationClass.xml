@@ -58,7 +58,6 @@
     <apiKey>
       <customDisplay/>
       <disabled>0</disabled>
-      <hint/>
       <name>apiKey</name>
       <number>1</number>
       <picker>0</picker>
