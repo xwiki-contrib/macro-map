@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="XWiki.MapMacroTranslations" locale="fa">
-  <web>XWiki</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.MapMacroTranslations" locale="sk">
+  <web>Macros.MapMacro</web>
   <name>MapMacroTranslations</name>
-  <language>fa</language>
+  <language>sk</language>
   <defaultLanguage>en</defaultLanguage>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1424868107000</creationDate>
-  <parent>XWiki.MapMacro</parent>
+  <parent>Macros.MapMacro.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1525702990000</date>
@@ -39,22 +39,21 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>rendering.macro.map.name=نقشه
-rendering.macro.map.description=نقشه جغرافیایی تعاملی را نمایش میدهد
-rendering.macro.map.parameter.location.name=مکان
-rendering.macro.map.parameter.location.description=مکان به نقشه
-rendering.macro.map.parameter.width.name=عرض
-rendering.macro.map.parameter.width.description=عرض نقشه به پیکسل
-rendering.macro.map.parameter.height.name=ارتفاع
-rendering.macro.map.parameter.height.description=ارتفاع نقشه به پیکسل
-rendering.macro.map.parameter.zoom.name=بزرگنمایی
-rendering.macro.map.parameter.zoom.description=بزرگنمایی اولیه که نقشه بر آن متمرکز است. به صورت پیش فرض 15 میباشد که  تقریبا برابر اندازه یک بلوک از خانه ها میباشد.
-rendering.macro.map.parameter.errors.name=خطاها
-rendering.macro.map.parameter.errors.description=هنگامی که حالتی غیر از حالت مورد تایید رخ میدهد ، یک پنجره شامل کد وضعیت بازگشتی نشان داده میشود. (مقادیر\: نشان داده شود (پیش فرض)/مخفی)
-rendering.macro.map.content.description=اطلاعاتی که به عنوان راهنمای مکان نقشه برداری شده نمایش داده میشود
+  <content> rendering.macro.map.name=Mapa
+rendering.macro.map.description=Ukázať interaktívnu mapu
+rendering.macro.map.parameter.location.name=Umiestnenie
+### Missing: rendering.macro.map.parameter.location.description=Location to map
+rendering.macro.map.parameter.width.name=Šírka
+rendering.macro.map.parameter.width.description=Šírka mapy v pixeloch.
+rendering.macro.map.parameter.height.name=Výška
+rendering.macro.map.parameter.height.description=Výška mapy v pixeloch.
+rendering.macro.map.parameter.zoom.name=Zoom
+### Missing: rendering.macro.map.parameter.zoom.description=The initial zoom the map will be focused at. Default is 15, which is about the size of a block of houses.
+rendering.macro.map.parameter.errors.name=Chyby
+### Missing: rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
+### Missing: rendering.macro.map.content.description=Information to display as legend of the location mapped.
 ### Missing: rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
 ### Missing: rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
 
-### Missing: admin.mapmacro=Map Macro
-</content>
+### Missing: admin.mapmacro=Map Macro</content>
 </xwikidoc>

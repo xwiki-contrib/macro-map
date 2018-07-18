@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="MapMacro.Code.ConfigurationClass" locale="">
-  <web>MapMacro.Code</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.Code.ConfigurationClass" locale="">
+  <web>Macros.MapMacro.Code</web>
   <name>ConfigurationClass</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1525867319000</creationDate>
-  <parent>XWiki.XWikiClasses</parent>
+  <parent>Macros.MapMacro.Code.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1525944655000</date>
@@ -47,7 +47,7 @@
 #set ($defaultParent = $doc.fullName)
 {{/velocity}}</content>
   <class>
-    <name>MapMacro.Code.ConfigurationClass</name>
+    <name>Macros.MapMacro.Code.ConfigurationClass</name>
     <customClass/>
     <customMapping/>
     <defaultViewSheet/>
@@ -70,10 +70,10 @@
     </apiKey>
   </class>
   <object>
-    <name>MapMacro.Code.ConfigurationClass</name>
+    <name>Macros.MapMacro.Code.ConfigurationClass</name>
     <number>0</number>
     <className>XWiki.DocumentSheetBinding</className>
-    <guid>fde4d601-14ae-4053-b041-d12060e81b86</guid>
+    <guid>189d4856-9dbd-484d-aa44-2dabb69af016</guid>
     <class>
       <name>XWiki.DocumentSheetBinding</name>
       <customClass/>
