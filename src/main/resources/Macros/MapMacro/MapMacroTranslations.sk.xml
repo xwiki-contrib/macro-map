@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="XWiki.MapMacroTranslations" locale="sk">
-  <web>XWiki</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.MapMacroTranslations" locale="sk">
+  <web>Macros.MapMacro</web>
   <name>MapMacroTranslations</name>
   <language>sk</language>
   <defaultLanguage>en</defaultLanguage>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1424868107000</creationDate>
-  <parent>XWiki.MapMacro</parent>
+  <parent>Macros.MapMacro.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1525702990000</date>

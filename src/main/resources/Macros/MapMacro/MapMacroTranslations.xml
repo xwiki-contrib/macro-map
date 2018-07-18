@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="XWiki.MapMacroTranslations" locale="">
-  <web>XWiki</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.MapMacroTranslations" locale="">
+  <web>Macros.MapMacro</web>
   <name>MapMacroTranslations</name>
   <language/>
   <defaultLanguage>en</defaultLanguage>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1424868107000</creationDate>
-  <parent>XWiki.MapMacro</parent>
+  <parent>Macros.MapMacro.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1525702990000</date>
@@ -58,10 +58,10 @@ rendering.macro.map.apiKey.googlemaps.invalid=There is no valid Google API key f
 admin.mapmacro=Map Macro
 </content>
   <object>
-    <name>XWiki.MapMacroTranslations</name>
+    <name>Macros.MapMacro.MapMacroTranslations</name>
     <number>0</number>
     <className>XWiki.TranslationDocumentClass</className>
-    <guid>3b25c125-a84a-49f6-b1ce-b61eb3c048b9</guid>
+    <guid>0359ddf8-460b-49b0-9e18-4b690e09c385</guid>
     <class>
       <name>XWiki.TranslationDocumentClass</name>
       <customClass/>

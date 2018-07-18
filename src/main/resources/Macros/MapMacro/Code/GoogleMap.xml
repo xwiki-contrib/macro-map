@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="MapMacro.Code.GoogleMap" locale="">
-  <web>MapMacro.Code</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.Code.GoogleMap" locale="">
+  <web>Macros.MapMacro.Code</web>
   <name>GoogleMap</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1530085982000</creationDate>
-  <parent>dev:MapMacro.Code.WebHome</parent>
+  <parent>Macros.MapMacro.Code.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1530526176000</date>
@@ -41,10 +41,10 @@
   <hidden>true</hidden>
   <content/>
   <object>
-    <name>MapMacro.Code.GoogleMap</name>
+    <name>Macros.MapMacro.Code.GoogleMap</name>
     <number>0</number>
     <className>XWiki.JavaScriptExtension</className>
-    <guid>14a21fb4-ae4d-47dd-ae9a-6c3325599427</guid>
+    <guid>a131896b-f88b-4f7d-b070-66fb379b7cdb</guid>
     <class>
       <name>XWiki.JavaScriptExtension</name>
       <customClass/>

@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="XWiki.MapMacro" locale="">
-  <web>XWiki</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.MapMacro" locale="">
+  <web>Macros.MapMacro</web>
   <name>MapMacro</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1531488117000</creationDate>
-  <parent>Main.WebHome</parent>
+  <parent>Macros.MapMacro.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1531492959000</date>
@@ -85,16 +85,16 @@ No content.
 == Simple map with default OpenStreetMap tiles==
 
 {{code}}
-{{map location="35 rue Beaubourg, 75003 Paris" width="50%" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" /}}
 
-{{map location="47.156427, 27.576387" width="50%" locationType="latlng" /}}
+{{map location="47.156427, 27.576387" width="40%" locationType="latlng" /}}
 {{/code}}
 
-{{map location="35 rue Beaubourg, 75003 Paris" width="50%" /}}
+{{map location="35 rue Beaubourg, 75003 Paris" /}}
 
 ----
 
-{{map location="47.156427, 27.576387"  width="50%" locationType="latlng" /}}
+{{map location="47.156427, 27.576387"  width="40%" locationType="latlng" /}}
 
 == Simple map with custom OpenStreetMap tiles==
 
@@ -115,12 +115,12 @@ No content.
 == Map with parameters ==
 
 {{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400px" height="300px" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="500px" height="400px" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 {{/code}}
 
-{{map location="Rue des Thermopyles, 75014 Paris" width="400px" height="300px" library="googlemaps"}}
+{{map location="Rue des Thermopyles, 75014 Paris" width="500px" height="400px" library="googlemaps"}}
 A beautiful street in Paris
 {{/map}}
 
@@ -128,10 +128,10 @@ A beautiful street in Paris
 {{/velocity}}
 </content>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>0</number>
     <className>XWiki.WikiMacroClass</className>
-    <guid>772aa144-9a83-458b-ba6e-137ef80e8c88</guid>
+    <guid>0dd01b23-1e90-46c3-ae00-acb2d6323468</guid>
     <class>
       <name>XWiki.WikiMacroClass</name>
       <customClass/>
@@ -249,8 +249,8 @@ A beautiful street in Paris
     <property>
       <code>{{velocity}}
 ## Get API Key (e.g. for Google and Mapbox)
-#set ($apiKeyDoc = $xwiki.getDocument('MapMacro.Code.Configuration'))
-#set ($apiKeyObj = $apiKeyDoc.getObject('MapMacro.Code.ConfigurationClass'))
+#set ($apiKeyDoc = $xwiki.getDocument('Macros.MapMacro.Code.Configuration'))
+#set ($apiKeyObj = $apiKeyDoc.getObject('Macros.MapMacro.Code.ConfigurationClass'))
 #set ($apiKey = $apiKeyObj.getValue('apiKey'))
 #set ($library = $xcontext.macro.params.library)
 #if ($xcontext.action != 'edit')
@@ -258,27 +258,21 @@ A beautiful street in Paris
   ## Without this check, the macro cannot be added into a page with WYSIWYG editor
   ## (see http://jira.xwiki.org/browse/MAP-7).
   #if ($library == "googlemaps")
-    #set ($discard = $xwiki.jsx.use('MapMacro.Code.GoogleMap'))
+    #set ($discard = $xwiki.jsx.use('Macros.MapMacro.Code.GoogleMap'))
   #else
-    #set ($discard = $xwiki.ssx.use('MapMacro.Code.LeafletMap'))
-    #set ($discard = $xwiki.jsx.use('MapMacro.Code.LeafletMap'))
+    #set ($discard = $xwiki.ssx.use('Macros.MapMacro.Code.LeafletMap'))
+    #set ($discard = $xwiki.jsx.use('Macros.MapMacro.Code.LeafletMap'))
   #end
 #end
 #set ($mapId = $util.generateRandomString(5))
 #set ($width = $xcontext.macro.params.width)
 #set ($height = $xcontext.macro.params.height)
-#if ($width.indexOf('px') &lt; 0)
-  #set ($width = "${width}px")
-#end
-#if ($height.indexOf('px') &lt; 0)
-  #set ($height = "${height}px")
-#end
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
 #set ($tiles = $xcontext.macro.params.tiles)
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
-#if ($xwiki.exists("XWiki.MapMacro"))
+#if ($xwiki.exists("Macros.MapMacro.MapMacro"))
   #set ($wiki = $xcontext.wiki)
 #else
   #set ($wiki = $xcontext.mainWikiName)
@@ -322,10 +316,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>0</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>f085e87f-7bcd-4a1f-bad5-dd351c648b07</guid>
+    <guid>572fa86d-35ee-49ba-badb-ec048a6f3532</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -388,10 +382,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>1</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>887d653f-3ea8-439f-b8a0-9fd0fc45a37d</guid>
+    <guid>d10b3b66-3f09-462d-b75b-18adc51c9ab7</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -454,10 +448,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>2</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>249ae86b-34d7-400e-9b15-93f5f22ed046</guid>
+    <guid>4cc103cc-2727-475b-8c6a-d4d302cc1f99</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -520,10 +514,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>3</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>bd25a49c-3648-4492-9114-ca611215e581</guid>
+    <guid>090eedcd-a119-49f7-b3b4-1ca1d6618f51</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -586,10 +580,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>4</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>24191ad8-8303-49b5-9dcb-86b70321eeab</guid>
+    <guid>fa5f1894-b552-46d9-b5fb-4894ed3305cd</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -652,10 +646,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>5</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>66546019-9e9e-49d7-90d9-2b9aacedb67f</guid>
+    <guid>417cf90e-999e-42ca-be60-13d7a827d836</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -718,10 +712,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>6</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>16c0eb20-559f-4928-a3b0-304839903d4e</guid>
+    <guid>0f6d8e98-d840-470c-abbb-f99133357019</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>
@@ -784,10 +778,10 @@ $!xcontext.macro.content
     </property>
   </object>
   <object>
-    <name>XWiki.MapMacro</name>
+    <name>Macros.MapMacro.MapMacro</name>
     <number>7</number>
     <className>XWiki.WikiMacroParameterClass</className>
-    <guid>7d5ddc8d-cd17-4d71-a34d-e22e034a834e</guid>
+    <guid>50e5a039-75e3-415b-93fc-d84552953001</guid>
     <class>
       <name>XWiki.WikiMacroParameterClass</name>
       <customClass/>

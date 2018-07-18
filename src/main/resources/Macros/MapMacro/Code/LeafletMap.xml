@@ -20,15 +20,15 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="MapMacro.Code.LeafletMap" locale="">
-  <web>MapMacro.Code</web>
+<xwikidoc version="1.3" reference="Macros.MapMacro.Code.LeafletMap" locale="">
+  <web>Macros.MapMacro.Code</web>
   <name>LeafletMap</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
   <creationDate>1530086149000</creationDate>
-  <parent>Main.WebHome</parent>
+  <parent>Macros.MapMacro.Code.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <date>1531407564000</date>
@@ -256,10 +256,10 @@
     </property>
   </object>
   <object>
-    <name>MapMacro.Code.LeafletMap</name>
+    <name>Macros.MapMacro.Code.LeafletMap</name>
     <number>0</number>
     <className>XWiki.StyleSheetExtension</className>
-    <guid>f156dc02-e186-46ea-992f-019fa167f00d</guid>
+    <guid>c6b443ff-0c08-4fc1-8e93-a5e3b88a3930</guid>
     <class>
       <name>XWiki.StyleSheetExtension</name>
       <customClass/>
