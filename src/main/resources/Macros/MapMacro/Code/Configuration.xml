@@ -63,7 +63,7 @@
         <customDisplay/>
         <disabled>0</disabled>
         <name>apiKey</name>
-        <number>1</number>
+        <number>2</number>
         <picker>0</picker>
         <prettyName>API key or access token</prettyName>
         <size>30</size>
@@ -72,9 +72,34 @@
         <validationRegExp/>
         <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
       </apiKey>
+      <library>
+        <cache>0</cache>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <hint/>
+        <multiSelect>0</multiSelect>
+        <name>library</name>
+        <number>1</number>
+        <picker>0</picker>
+        <prettyName>Map library</prettyName>
+        <relationalStorage>1</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <sort>none</sort>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <values>leaflet=Leaflet|googlemaps=Google Maps</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </library>
     </class>
     <property>
       <apiKey/>
+    </property>
+    <property>
+      <library>leaflet</library>
     </property>
   </object>
   <object>
