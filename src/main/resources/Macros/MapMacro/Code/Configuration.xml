@@ -77,7 +77,6 @@
         <customDisplay/>
         <disabled>0</disabled>
         <displayType>select</displayType>
-        <hint/>
         <multiSelect>0</multiSelect>
         <name>library</name>
         <number>1</number>

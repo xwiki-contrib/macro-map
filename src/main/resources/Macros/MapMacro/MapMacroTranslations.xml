@@ -52,8 +52,8 @@ rendering.macro.map.parameter.zoom.description=The initial zoom the map will be 
 rendering.macro.map.parameter.errors.name=Errors
 rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
 rendering.macro.map.content.description=Information to display as legend of the location mapped.
-rendering.macro.map.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}.
-rendering.macro.map.apiKey.googlemaps.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
+macroMap.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}. If you use the default library (Leaflet) and the default tile server (OpenStreetMap), no API key or token is needed.
+macroMap.apiKey.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
 
 admin.mapmacro=Map Macro
 </content>
