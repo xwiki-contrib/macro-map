@@ -262,11 +262,11 @@ To use the Google Maps JavaScript API or the Mapbox tile server, you must regist
     </class>
     <property>
       <code>{{velocity}}
-## Get API Key (e.g. for Google and Mapbox)
-#set ($apiKeyDoc = $xwiki.getDocument('Macros.MapMacro.Code.Configuration'))
-#set ($apiKeyObj = $apiKeyDoc.getObject('Macros.MapMacro.Code.ConfigurationClass'))
-#set ($apiKey = $apiKeyObj.getValue('apiKey'))
-#set ($library = $xcontext.macro.params.library)
+## Get Library (Leaflet or Google maps) and API key (e.g. for Google and Mapbox)
+#set ($configDoc = $xwiki.getDocument('Macros.MapMacro.Code.Configuration'))
+#set ($configObj = $configDoc.getObject('Macros.MapMacro.Code.ConfigurationClass'))
+#set ($library = $configObj.getValue('library'))
+#set ($apiKey = $configObj.getValue('apiKey'))
 #if ($xcontext.action != 'edit')
   ## The map should not be displayed when the mode is edit, so we don't load the JS in that case.
   ## Without this check, the macro cannot be added into a page with WYSIWYG editor
@@ -292,7 +292,7 @@ To use the Google Maps JavaScript API or the Mapbox tile server, you must regist
 #set ($tiles = $xcontext.macro.params.tiles)
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
-#if ($xwiki.exists('Macros.MapMacro.MapMacro'))
+#if ($xwiki.exists('Macros.MapMacro.WebHome'))
   #set ($wiki = $xcontext.wiki)
 #else
   #set ($wiki = $xcontext.mainWikiName)
@@ -729,72 +729,6 @@ $!xcontext.macro.content
     </property>
     <property>
       <name>locationType</name>
-    </property>
-  </object>
-  <object>
-    <name>Macros.MapMacro.WebHome</name>
-    <number>6</number>
-    <className>XWiki.WikiMacroParameterClass</className>
-    <guid>3ca40996-79c2-4661-afbe-638f4efda9c7</guid>
-    <class>
-      <name>XWiki.WikiMacroParameterClass</name>
-      <customClass/>
-      <customMapping/>
-      <defaultViewSheet/>
-      <defaultEditSheet/>
-      <defaultWeb/>
-      <nameField/>
-      <validationScript/>
-      <defaultValue>
-        <disabled>0</disabled>
-        <name>defaultValue</name>
-        <number>4</number>
-        <prettyName>Parameter default value</prettyName>
-        <size>30</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-      </defaultValue>
-      <description>
-        <disabled>0</disabled>
-        <name>description</name>
-        <number>2</number>
-        <prettyName>Parameter description</prettyName>
-        <rows>5</rows>
-        <size>40</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
-      </description>
-      <mandatory>
-        <disabled>0</disabled>
-        <displayFormType>select</displayFormType>
-        <displayType>yesno</displayType>
-        <name>mandatory</name>
-        <number>3</number>
-        <prettyName>Parameter mandatory</prettyName>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
-      </mandatory>
-      <name>
-        <disabled>0</disabled>
-        <name>name</name>
-        <number>1</number>
-        <prettyName>Parameter name</prettyName>
-        <size>30</size>
-        <unmodifiable>0</unmodifiable>
-        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-      </name>
-    </class>
-    <property>
-      <defaultValue>leaflet</defaultValue>
-    </property>
-    <property>
-      <description>JavaScript library to be used for displaying maps. Either ##leaflet## or ##googlemaps##.</description>
-    </property>
-    <property>
-      <mandatory>0</mandatory>
-    </property>
-    <property>
-      <name>library</name>
     </property>
   </object>
   <object>

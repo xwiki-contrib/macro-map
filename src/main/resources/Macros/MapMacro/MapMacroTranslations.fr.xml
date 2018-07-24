@@ -39,21 +39,20 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content> rendering.macro.map.name=Carte
+  <content>rendering.macro.map.name=Carte
 rendering.macro.map.description=Afficher une carte géographique interactive
 rendering.macro.map.parameter.location.name=Position
 rendering.macro.map.parameter.location.description=Position à afficher.
 rendering.macro.map.parameter.width.name=Largeur
-rendering.macro.map.parameter.width.description=Largeur de la carte en pixels.
+rendering.macro.map.parameter.width.description=Largeur de la carte en pixels ou en pourcentage.
 rendering.macro.map.parameter.height.name=Hauteur
-rendering.macro.map.parameter.height.description=Hauteur de la carte en pixels.
+rendering.macro.map.parameter.height.description=Hauteur de la carte en pixels ou en pourcentage.
 rendering.macro.map.parameter.zoom.name=Zoom
-rendering.macro.map.parameter.zoom.description=Regler le niveau de zoom initial de la carte à. 15 par défaut, ce qui correspond environ à la taille d'un pâté de maisons.
+rendering.macro.map.parameter.zoom.description=Régler le niveau de zoom initial de la carte à 15 par défaut, ce qui correspond environ à la taille d'un pâté de maisons.
 rendering.macro.map.parameter.errors.name=Erreurs
-rendering.macro.map.parameter.errors.description=Afficher une popup avec le code de retour quand celui ci est différent de "OK" (valeurs\: show (par défaut) / hide).
+rendering.macro.map.parameter.errors.description=Afficher une popup avec le code de retour quand celui-ci est différent de "OK" (valeurs\: show (par défaut) / hide).
 rendering.macro.map.content.description=Informations à afficher comme légende de l'emplacement indiqué sur la carte.
-### Missing: rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
-### Missing: rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
-
-### Missing: admin.mapmacro=Map Macro</content>
+rendering.macro.map.apiKey.info=Pour utiliser la macro map avec Google Maps ou Mapbox, vous devez obtenir {0}une clef Google Maps{1} ou {2}un token d accès Mapbox{3}.
+rendering.macro.map.apiKey.invalid=Aucune clef d API Google Maps n est définie pour cette macro. Merci de consulter {0}la section Map de la console d administration{1}.
+rendering.macro.map.apiKey=Clef d API ou token d accès</content>
 </xwikidoc>
