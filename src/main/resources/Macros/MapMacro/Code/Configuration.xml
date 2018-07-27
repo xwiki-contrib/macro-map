@@ -41,7 +41,7 @@
   <hidden>true</hidden>
   <content>{{velocity}}
 {{info}}
-  $services.localization.render('rendering.macro.map.apiKey.info', ['[[','&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]]', '[[','&gt;&gt;path:https://www.mapbox.com/account/access-tokens]]'])
+  $services.localization.render('macroMap.apiKey.info', ['[[','&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]]', '[[','&gt;&gt;path:https://www.mapbox.com/account/access-tokens]]'])
 {{/info}}
 {{/velocity}}
 </content>
@@ -63,7 +63,7 @@
         <customDisplay/>
         <disabled>0</disabled>
         <name>apiKey</name>
-        <number>2</number>
+        <number>3</number>
         <picker>0</picker>
         <prettyName>API key or access token</prettyName>
         <size>30</size>
@@ -93,12 +93,28 @@
         <values>leaflet=Leaflet|googlemaps=Google Maps</values>
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </library>
+      <tileServer>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>tileServer</name>
+        <number>2</number>
+        <picker>1</picker>
+        <prettyName>Tile server URL</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </tileServer>
     </class>
     <property>
       <apiKey/>
     </property>
     <property>
       <library>leaflet</library>
+    </property>
+    <property>
+      <tileServer>https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png</tileServer>
     </property>
   </object>
   <object>

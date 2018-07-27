@@ -267,6 +267,7 @@ To use the Google Maps JavaScript API or the Mapbox tile server, you must regist
 #set ($configObj = $configDoc.getObject('Macros.MapMacro.Code.ConfigurationClass'))
 #set ($library = $configObj.getValue('library'))
 #set ($apiKey = $configObj.getValue('apiKey'))
+#set ($tilesConfig = $configObj.getValue('tileServer'))
 #if ($xcontext.action != 'edit')
   ## The map should not be displayed when the mode is edit, so we don't load the JS in that case.
   ## Without this check, the macro cannot be added into a page with WYSIWYG editor
@@ -289,7 +290,10 @@ To use the Google Maps JavaScript API or the Mapbox tile server, you must regist
 #end
 #set ($zoom = $xcontext.macro.params.zoom)
 #set ($errors = $xcontext.macro.params.errors)
+## The tile URL defined at the macro level overrides the one defined in the configuration class
 #set ($tiles = $xcontext.macro.params.tiles)
+#if (!$tiles)
+  #set ($tiles = $tilesConfig)
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
 #if ($xwiki.exists('Macros.MapMacro.WebHome'))
@@ -305,7 +309,7 @@ $!xcontext.macro.content
 )))
 (% id="invalidApiKey-map${mapId}" class="hidden"%)(((
   {{error}}
-    $services.localization.render('rendering.macro.map.apiKey.googlemaps.invalid', ['[[',"&gt;&gt;path:$mapConfigURL]]"])
+    $services.localization.render('macroMap.apiKey.invalid', ['[[',"&gt;&gt;path:$mapConfigURL]]"])
   {{/error}}
 )))
 {{/velocity}}</code>
@@ -785,7 +789,7 @@ $!xcontext.macro.content
       </name>
     </class>
     <property>
-      <defaultValue>https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png</defaultValue>
+      <defaultValue/>
     </property>
     <property>
       <description>URL scheme of the tile provider. Example: [[https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png]] (default). See also: [[OpenStreetMap tile servers&gt;&gt;https://wiki.openstreetmap.org/wiki/Tile_servers]].</description>
