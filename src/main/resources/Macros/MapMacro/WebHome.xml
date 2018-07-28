@@ -43,7 +43,7 @@
 {{toc/}}
 {{/box}}
 
-= Description =
+== Description ==
 
 {{velocity}}
 #set($macro = $doc.getObject('XWiki.WikiMacroClass'))
@@ -54,8 +54,9 @@ $doc.display("description", $macro)
 #end
 {{/velocity}}
 
-= Usage =
-
+{{info}}
+You will need connectivity back and forth from the wiki to either OpenStreetMap or Google Maps servers for the macro to properly work. This might not be the case for a intranet in a corporate environment for example. 
+{{/info}}
 
 == Content ==
 
@@ -63,23 +64,20 @@ The content is optional and is used only with Google Maps for displaying informa
 
 == Parameters ==
 
-{{velocity}}
-#set($params = $doc.getObjects("XWiki.WikiMacroParameterClass"))
-|=Name|=Mandatory|=Default|=Description
-#foreach($param in $params)
-|**$doc.display("name", $param)**|$doc.display("mandatory", $param)|$doc.display("defaultValue", $param)|$doc.display("description", $param)
-#end
-{{/velocity}}
+|=Name|=Mandatory|=(% style="width:15%" %)Values|=Default|=Description
+|**location**|**Yes**|*|-|Address of a place
+|**width**|**No**|[0-9]+px or % |500px|The width in pixels or in percent the map container will take
+|**height**|**No**|[0-9]+px or %|400px|The height in pixels or in percent the map container will take
+|**zoom**|**No**|[0-9]+|15 (which is about the size of a block of houses)|The initial zoom the map will be focused at. Please refer to your provider API reference for intelligible values.
+|**errors**|**No**|show / hide|show|Display a popup with the returned status code when it is anything other than "OK"
+|**locationType**|**No**|address/latlng|address|{{info}}Since 1.2.3{{/info}} Specify the type of location, possible values : ##address## (default) or ##latlng## ( in this case the location should be a geographic coordinate like : 47.156427, 27.576387)
+|**tiles**|**No**||OSM tile server|URL scheme of the tile provider. Example: [[https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png]] (default). See also: [[OpenStreetMap tile servers&gt;&gt;https://wiki.openstreetmap.org/wiki/Tile_servers]]. The tile provider can be set either from the map macro administration page (see below) or at the macro level.
 
-== Events ==
+== Administration ==
 
-|=Name|=Description
-|GMAPS:OK|Indicates that no errors occurred; the address was successfully parsed and at least one geocode was returned
-|GMAPS:ZERO_RESULTS|Indicates that the geocode was successful but returned no results. This may occur if the geocoder was passed a non-existent address.
-|GMAPS:OVER_QUERY_LIMIT|Indicates that you are over your quota.
-|GMAPS:REQUEST_DENIED|Indicates that your request was denied.
-|GMAPS:INVALID_REQUEST|Generally indicates that the query (address, components or latlng) is missing.
-|GMAPS:UNKNOWN_ERROR|Indicates that the request could not be processed due to a server error. The request may succeed if you try again.
+{{info}}
+Choose the map library (either Leaflet (default) or Google Maps) and the tile server directly from the map macro administration section. To use the Google Maps JavaScript API or the Mapbox tile server, you must register your app project on the Google API Console or on the Mapbox console and get a [[Google API key&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]] or a [[Mapbox token&gt;&gt;https://www.mapbox.com/help/how-access-tokens-work/]], which you can add to your app.
+{{/info}}
 
 == Examples ==
 
@@ -121,25 +119,20 @@ Result:
 
 === Map with Google Maps tiles ===
 
-{{code}}
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300" library="googlemaps"}}
-A beautiful street in Paris
-{{/map}}
-{{/code}}
-
-Result:
-
-{{map location="Rue des Thermopyles, 75014 Paris" width="400" height="300" library="googlemaps"}}
-A beautiful street in Paris
-{{/map}}
-
-= Administration =
-
-{{info}}
-To use the Google Maps JavaScript API or the Mapbox tile server, you must register your app project on the Google API Console or the Mapbox console and get a [[Google API key&gt;&gt;path:https://developers.google.com/maps/documentation/javascript/get-api-key]] or a [[Mapbox token&gt;&gt;https://www.mapbox.com/help/how-access-tokens-work/]], which you can add to your app. Add your key in the Macro Map administration section.
-{{/info}}
+In order to use the Google Maps tiles, head to the map macro administration section as explained above, and select "Google Maps" library. In that case, you don't need to fill in any tile server as it is automatically set to the Google Maps one.
 
 
+== Google Maps Events ==
+
+If you use the Google Maps library, the events listed below are available.
+
+|=Name|=Description
+|GMAPS:OK|Indicates that no errors occurred; the address was successfully parsed and at least one geocode was returned
+|GMAPS:ZERO_RESULTS|Indicates that the geocode was successful but returned no results. This may occur if the geocoder was passed a non-existent address.
+|GMAPS:OVER_QUERY_LIMIT|Indicates that you are over your quota.
+|GMAPS:REQUEST_DENIED|Indicates that your request was denied.
+|GMAPS:INVALID_REQUEST|Generally indicates that the query (address, components or latlng) is missing.
+|GMAPS:UNKNOWN_ERROR|Indicates that the request could not be processed due to a server error. The request may succeed if you try again.
 </content>
   <object>
     <name>Macros.MapMacro.WebHome</name>
@@ -294,6 +287,7 @@ To use the Google Maps JavaScript API or the Mapbox tile server, you must regist
 #set ($tiles = $xcontext.macro.params.tiles)
 #if (!$tiles)
   #set ($tiles = $tilesConfig)
+#end
 #set ($location = $xcontext.macro.params.location)
 #set ($locationType = $xcontext.macro.params.locationType)
 #if ($xwiki.exists('Macros.MapMacro.WebHome'))
@@ -324,7 +318,7 @@ $!xcontext.macro.content
       <defaultCategory/>
     </property>
     <property>
-      <description>Display an interactive geographical map</description>
+      <description>Displays an interactive geographical map.</description>
     </property>
     <property>
       <id>map</id>
