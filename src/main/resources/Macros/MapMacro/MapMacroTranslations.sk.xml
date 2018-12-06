@@ -52,8 +52,8 @@ rendering.macro.map.parameter.zoom.name=Zoom
 rendering.macro.map.parameter.errors.name=Chyby
 ### Missing: rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
 ### Missing: rendering.macro.map.content.description=Information to display as legend of the location mapped.
-### Missing: rendering.macro.map.apiKey.info=To use the Maps JavaScript API, you must register your app project on the Google API Console and get a {0}Google API key{1} which you can add to your app.
-### Missing: rendering.macro.map.apiKey.invalid=There is no valid Google API Key for this application. Please visit the {0}Map section{1}.
+### Missing: macroMap.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}. If you use the default library (Leaflet) and the default tile server (OpenStreetMap), no API key or token is needed.
+### Missing: macroMap.apiKey.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
 
 ### Missing: admin.mapmacro=Map Macro</content>
 </xwikidoc>
