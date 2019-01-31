@@ -55,6 +55,5 @@ rendering.macro.map.content.description=Informacije za prikazati kao legendu map
 ### Missing: macroMap.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}. If you use the default library (Leaflet) and the default tile server (OpenStreetMap), no API key or token is needed.
 ### Missing: macroMap.apiKey.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
 
-### Missing: admin.mapmacro=Map Macro
-</content>
+### Missing: admin.mapmacro=Map Macro</content>
 </xwikidoc>

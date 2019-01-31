@@ -39,7 +39,7 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content> rendering.macro.map.name=Mapa
+  <content>rendering.macro.map.name=Mapa
 rendering.macro.map.description=Ukázať interaktívnu mapu
 rendering.macro.map.parameter.location.name=Umiestnenie
 ### Missing: rendering.macro.map.parameter.location.description=Location to map
