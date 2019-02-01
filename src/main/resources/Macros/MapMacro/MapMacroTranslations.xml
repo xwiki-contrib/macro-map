@@ -55,8 +55,7 @@ rendering.macro.map.content.description=Information to display as legend of the 
 macroMap.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}. If you use the default library (Leaflet) and the default tile server (OpenStreetMap), no API key or token is needed.
 macroMap.apiKey.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
 
-admin.mapmacro=Map Macro
-</content>
+admin.mapmacro=Map Macro</content>
   <object>
     <name>Macros.MapMacro.MapMacroTranslations</name>
     <number>0</number>
