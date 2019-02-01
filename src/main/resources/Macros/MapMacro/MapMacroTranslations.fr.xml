@@ -42,7 +42,7 @@
   <content>rendering.macro.map.name=Carte
 rendering.macro.map.description=Afficher une carte géographique interactive
 rendering.macro.map.parameter.location.name=Position
-rendering.macro.map.parameter.location.description=Position à afficher.
+rendering.macro.map.parameter.location.description=Position à afficher
 rendering.macro.map.parameter.width.name=Largeur
 rendering.macro.map.parameter.width.description=Largeur de la carte en pixels ou en pourcentage.
 rendering.macro.map.parameter.height.name=Hauteur
@@ -50,10 +50,10 @@ rendering.macro.map.parameter.height.description=Hauteur de la carte en pixels o
 rendering.macro.map.parameter.zoom.name=Zoom
 rendering.macro.map.parameter.zoom.description=Régler le niveau de zoom initial de la carte à 15 par défaut, ce qui correspond environ à la taille d'un pâté de maisons.
 rendering.macro.map.parameter.errors.name=Erreurs
-rendering.macro.map.parameter.errors.description=Afficher une popup avec le code de retour quand celui-ci est différent de "OK" (valeurs\: show (par défaut) / hide).
+rendering.macro.map.parameter.errors.description=Afficher une popup avec le code de retour quand celui-ci est différent de "OK" (valeurs: show (par défaut) / hide).
 rendering.macro.map.content.description=Informations à afficher comme légende de l'emplacement indiqué sur la carte.
 macroMap.apiKey.info=Pour utiliser la macro map avec Google Maps ou Mapbox, vous devez obtenir {0}une clef Google Maps{1} ou {2}un token d''accès Mapbox{3}. Si la librairie par défaut est utilisée (Leaflet) avec le serveur de tuiles par défaut (OpenStreetMap), aucune clef n''est nécessaire.
 macroMap.apiKey.invalid=Aucune clef d API Google Maps n est définie pour cette macro. Merci de consulter {0}la section Map de la console d administration{1}.
 
-### Missing: admin.mapmacro=Map Macro</content>
+admin.mapmacro=Macro de carte</content>
 </xwikidoc>
