@@ -39,22 +39,22 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>### Missing: rendering.macro.map.name=Map
+  <content>rendering.macro.map.name=Карта
 rendering.macro.map.description=Отображение интерактивной географической карты
 rendering.macro.map.parameter.location.name=Расположение
-### Missing: rendering.macro.map.parameter.location.description=Location to map
+rendering.macro.map.parameter.location.description=Расположение на карте
 rendering.macro.map.parameter.width.name=Ширина
 rendering.macro.map.parameter.width.description=Ширина карты в пикселях или %.
 rendering.macro.map.parameter.height.name=Высота
 rendering.macro.map.parameter.height.description=Высота карты в пикселях или %.
 rendering.macro.map.parameter.zoom.name=Увеличить
-### Missing: rendering.macro.map.parameter.zoom.description=The initial zoom the map will be focused at. Default is 15, which is about the size of a block of houses.
-### Missing: rendering.macro.map.parameter.errors.name=Errors
-### Missing: rendering.macro.map.parameter.errors.description=Display a popup with the returned status code when it is anything other than "OK" (values: show(default)/hide).
-### Missing: rendering.macro.map.content.description=Information to display as legend of the location mapped.
-### Missing: macroMap.apiKey.info=To use the map macro with Google Maps or Mapbox, you must get a {0}Google API key{1} or a {2}Mapbox access token{3}. If you use the default library (Leaflet) and the default tile server (OpenStreetMap), no API key or token is needed.
-### Missing: macroMap.apiKey.invalid=There is no valid Google API key for this macro. Please visit the {0}Map Macro section{1}.
+rendering.macro.map.parameter.zoom.description=Первоначальный масштаб карты. По умолчанию 15, что примерно соответствует размеру квартала домов.
+rendering.macro.map.parameter.errors.name=Ошибки
+rendering.macro.map.parameter.errors.description=Отображает всплывающее окно с кодом возврата, если он отличается от "OK" (значения: show(по умолчанию)/hide).
+rendering.macro.map.content.description=Информация для отображения в качестве легенды отмеченного места.
+macroMap.apiKey.info=Чтобы использовать макрос карты с Google Maps или Mapbox, Вы должны получить {0}Google API key{1} или {2}Mapbox access token{3}. Если вы используете библиотеку по умолчанию (Leaflet) и сервер плиток по умолчанию (OpenStreetMap), то API key или access token не требуются.
+macroMap.apiKey.invalid=Нет действительного Google API key для данного макроса. Пожалуйста, посетите раздел {0}Макрос карты{1}.
 
-### Missing: admin.mapmacro=Map Macro</content>
+admin.mapmacro=Макрос карты</content>
   
 </xwikidoc>
