@@ -136,7 +136,7 @@
       var mapId = this.options.mapId !== undefined ? this.options.mapId : 'map-id';
       var tiles = this.options.tiles;
       var locationType = this.options.locationType ? this.options.locationType.toLowerCase() : 'address';
-      var info = this.options.info !== undefined ? this.options.info : '';
+      var info = this.options.info;
       var that = this;
       if (locationType == 'latlng') {
         var latLng = this.options.location;
@@ -176,11 +176,12 @@
 
       var marker = L.marker(latLng, {icon: icon}).addTo(mymap);
       marker.on('click', onClick);
-      if(info != '')
-          marker.bindPopup(info);
+      if (info !== undefined) {
+        marker.bindPopup(info);
+      }
       
       function onClick() {
-        if(info == ''){
+        if (info === undefined) {
           var url = "https://www.openstreetmap.org/directions?engine=graphhopper_foot&amp;to="+ latLng+ "#map=19/"+ latLng[0]+"/"+ latLng[1];
           window.open(url,'_blank');
         }
