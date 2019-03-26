@@ -195,26 +195,34 @@
       if (library == "leaflet") {
         var options = {};
         var mapId = item.id;
-        if (item.textContent)
+        if (item.textContent) {
           options.info = item.textContent;
-        if (mapId)
+        }
+        if (mapId) {
           options.mapId = mapId;
+        }
         var zoom = item.dataset.zoom;
-        if (zoom)
+        if (zoom) {
           options.zoom = zoom;
+        }
         var location = item.dataset.location;
-        if (location)
+        if (location) {
           options.location = location;
+        }
         var locationType = item.dataset.locationType;
-        if (locationType)
+        if (locationType) {
           options.locationType = locationType;
-        else
+        }
+        else {
           options.locationType = 'address';
+        }
         var tiles = item.dataset.tiles;
-        if (tiles)
+        if (tiles) {
           options.tiles = tiles;
-        else
+        }
+        else {
           options.tiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        }
         new XWiki.leafletMap(item, options);
       }
     });
