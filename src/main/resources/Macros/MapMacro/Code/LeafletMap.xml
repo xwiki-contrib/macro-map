@@ -136,17 +136,18 @@
       var mapId = this.options.mapId !== undefined ? this.options.mapId : 'map-id';
       var tiles = this.options.tiles;
       var locationType = this.options.locationType ? this.options.locationType.toLowerCase() : 'address';
+      var info = this.options.info;
       var that = this;
       if (locationType == 'latlng') {
         var latLng = this.options.location;
-        this.createMap(mapId, tiles, zoom, latLng);
+        this.createMap(mapId, tiles, zoom, latLng, info);
       } else {
         var queryUrl = "https://nominatim.openstreetmap.org/search";
         var q = this.options.location;
         $.getJSON(queryUrl, {'q':q, 'format':'json'}).then(function(data) {
           if (data != undefined &amp;&amp; data.length &gt; 0) {
             var latLng = [data[0].lat, data[0].lon];
-            that.createMap(mapId, tiles, zoom, latLng);
+            that.createMap(mapId, tiles, zoom, latLng, info);
           } else {
             new XWiki.widgets.Notification('Error while geocoding the address "' + q +'" with OpenStreetMap Nominatim', 'error');
           }
@@ -154,7 +155,7 @@
       }
     },
     
-    createMap: function(mapId, tiles, zoom, latLng) {
+    createMap: function(mapId, tiles, zoom, latLng, info) {
       var mymap = L.map(mapId).setView(latLng, zoom);
       L.tileLayer(tiles, {
         attribution: '&amp;copy; &lt;a href="https://www.openstreetmap.org/"&gt;OpenStreetMap&lt;/a&gt;',
@@ -175,10 +176,15 @@
 
       var marker = L.marker(latLng, {icon: icon}).addTo(mymap);
       marker.on('click', onClick);
+      if (info !== undefined) {
+        marker.bindPopup(info);
+      }
       
       function onClick() {
-        var url = "https://www.openstreetmap.org/directions?engine=graphhopper_foot&amp;to="+ latLng+ "#map=19/"+ latLng[0]+"/"+ latLng[1];
-        window.open(url,'_blank');
+        if (info === undefined) {
+          var url = "https://www.openstreetmap.org/directions?engine=graphhopper_foot&amp;to="+ latLng+ "#map=19/"+ latLng[0]+"/"+ latLng[1];
+          window.open(url,'_blank');
+        }
       }
     }
   });
@@ -189,24 +195,34 @@
       if (library == "leaflet") {
         var options = {};
         var mapId = item.id;
-        if (mapId)
+        if (item.textContent) {
+          options.info = item.textContent;
+        }
+        if (mapId) {
           options.mapId = mapId;
+        }
         var zoom = item.dataset.zoom;
-        if (zoom)
+        if (zoom) {
           options.zoom = zoom;
+        }
         var location = item.dataset.location;
-        if (location)
+        if (location) {
           options.location = location;
+        }
         var locationType = item.dataset.locationType;
-        if (locationType)
+        if (locationType) {
           options.locationType = locationType;
-        else
+        }
+        else {
           options.locationType = 'address';
+        }
         var tiles = item.dataset.tiles;
-        if (tiles)
+        if (tiles) {
           options.tiles = tiles;
-        else
+        }
+        else {
           options.tiles = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        }
         new XWiki.leafletMap(item, options);
       }
     });
