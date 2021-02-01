@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <!--
  * See the NOTICE file distributed with this work for additional
@@ -48,13 +48,13 @@ rendering.macro.map.parameter.width.description=Anchura del mapa en pixeles o po
 rendering.macro.map.parameter.height.name=Alto
 rendering.macro.map.parameter.height.description=Altura del mapa en pixeles o porcentaje.
 rendering.macro.map.parameter.zoom.name=Enfoque
-rendering.macro.map.parameter.zoom.description=El enfoque inicial del mapa.   Predeterminado a 15, que es el tamaño aproximado de un bloque de casas.
+rendering.macro.map.parameter.zoom.description=El enfoque inicial del mapa. Predeterminado a 15, que es el tamaño aproximado de un bloque de casas.
 rendering.macro.map.parameter.errors.name=Errores
 rendering.macro.map.parameter.errors.description=Muestra una ventana emergente con el código de estado devuelto si es distinto de "OK" (valores: show(predeterminado)/hide).
 rendering.macro.map.content.description=Información a mostrar como leyenda de la ubicación asignada.
-macroMap.apiKey.info=Para utilizar la macro map con Google Maps o Mapbox, necesitas obtener una {0}clave de Google API{1}  o un {2}token de acceso a Mapbox{3}. Si empleas la biblioteca predeterminada (Leaflet) y el servidor de mosaicos ("tile") predeterminado (OpenStreetMap), no se necesita ninguna clave o token de API.
+macroMap.apiKey.info=Para utilizar la macro map con Google Maps o Mapbox, necesitas obtener una {0}clave de Google API{1} o un {2}token de acceso a Mapbox{3}. Si empleas la biblioteca predeterminada (Leaflet) y el servidor de mosaicos ("tile") predeterminado (OpenStreetMap), no se necesita ninguna clave o token de API.
 macroMap.apiKey.invalid=No hay una clave válida de Google API. Visita, por favor, la {0}sección de la macro Map{1}.
-
-admin.mapmacro=Macro Map</content>
+admin.mapmacro=Macro Map
+</content>
   
 </xwikidoc>
