@@ -126,7 +126,7 @@
   'use strict';
 
   XWiki.leafletMap = Class.create({
-    
+
     initialize: function(element, options) {
       this.element = $(element);
       // Default option values
@@ -154,7 +154,7 @@
         });
       }
     },
-    
+
     createMap: function(mapId, tiles, zoom, latLng, info) {
       var mymap = L.map(mapId).setView(latLng, zoom);
       L.tileLayer(tiles, {
@@ -179,7 +179,7 @@
       if (info !== undefined) {
         marker.bindPopup(info);
       }
-      
+
       function onClick() {
         if (info === undefined) {
           var url = "https://www.openstreetmap.org/directions?engine=graphhopper_foot&amp;to="+ latLng+ "#map=19/"+ latLng[0]+"/"+ latLng[1];
@@ -189,8 +189,10 @@
     }
   });
 
-  var init = function() {
-    $$('.xwiki-map-container').each(function(item) {
+  var init = function(event, data) {
+    var container = $((data &amp;&amp; data.elements) || document);
+    container.find('.xwiki-map-container').each(function() {
+      var item = this;
       var library = item.dataset.library;
       if (library == "leaflet") {
         var options = {};
@@ -228,9 +230,9 @@
     });
   };
 
-  (XWiki &amp;&amp; XWiki.domIsLoaded &amp;&amp; init()) || document.observe('xwiki:dom:loaded', init);
-});
-</code>
+  $(document).on('xwiki:dom:updated', init);
+  $(init);
+});</code>
     </property>
     <property>
       <name>leaflet-map</name>
