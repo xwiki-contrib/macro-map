@@ -39,6 +39,11 @@
     <xwiki.extension.name>Map Macro</xwiki.extension.name>
     <xwiki.extension.category>macro</xwiki.extension.category>	  
     <xwiki.issueManagement.jira.id>MAP</xwiki.issueManagement.jira.id>
+
+    <!-- Components -->
+    <xwiki.extension.components>
+      org.xwiki.rendering.macro.Macro/map
+    </xwiki.extension.components>
   </properties>
   <dependencies>
     <dependency>
