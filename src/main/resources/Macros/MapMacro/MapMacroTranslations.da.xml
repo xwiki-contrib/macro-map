@@ -39,21 +39,21 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>### Missing: rendering.macro.map.name=
-### Missing: rendering.macro.map.description=
-### Missing: rendering.macro.map.parameter.location.name=
-### Missing: rendering.macro.map.parameter.location.description=
-### Missing: rendering.macro.map.parameter.width.name=
-### Missing: rendering.macro.map.parameter.width.description=
-### Missing: rendering.macro.map.parameter.height.name=
-### Missing: rendering.macro.map.parameter.height.description=
-### Missing: rendering.macro.map.parameter.zoom.name=
-### Missing: rendering.macro.map.parameter.zoom.description=
-### Missing: rendering.macro.map.parameter.errors.name=
-### Missing: rendering.macro.map.parameter.errors.description=
-### Missing: rendering.macro.map.content.description=
-### Missing: macroMap.apiKey.info=
-### Missing: macroMap.apiKey.invalid=
-### Missing: admin.mapmacro=
+  <content>rendering.macro.map.name=Kort
+rendering.macro.map.description=Vis et interaktivt geografisk kort
+rendering.macro.map.parameter.location.name=Placering
+rendering.macro.map.parameter.location.description=Den placering, der skal vises på kortet
+rendering.macro.map.parameter.width.name=Bredde
+rendering.macro.map.parameter.width.description=Kortets bredde i pixel eller procent.
+rendering.macro.map.parameter.height.name=Højde
+rendering.macro.map.parameter.height.description=Kortets højde i pixel eller procent.
+rendering.macro.map.parameter.zoom.name=Zoom
+rendering.macro.map.parameter.zoom.description=Den zoom, kortet starter med. Standard er 15, hvilket svarer til omtrent en husblok.
+rendering.macro.map.parameter.errors.name=Fejl
+rendering.macro.map.parameter.errors.description=Vis en pop op-boks med den returnerede statuskode, når den er andet end "OK" (værdier: show (standard)/hide).
+rendering.macro.map.content.description=Oplysninger, der skal vises som forklaring til den viste placering.
+macroMap.apiKey.info=Hvis du vil bruge kortmakroen med Google Maps eller Mapbox, skal du have en {0}Google API-nøgle{1} eller et {2}Mapbox-adgangstoken{3}. Hvis du bruger standardbiblioteket (Leaflet) og standardfliseserveren (OpenStreetMap), kræves der ingen API-nøgle eller token.
+macroMap.apiKey.invalid=Der er ingen gyldig Google API-nøgle til denne makro. Gå til {0}afsnittet Kortmakro{1}.
+admin.mapmacro=Kortmakro
 </content>
 </xwikidoc>
