@@ -1,0 +1,59 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.3" reference="Macros.MapMacro.MapMacroTranslations" locale="da">
+  <web>Macros.MapMacro</web>
+  <name>MapMacroTranslations</name>
+  <language>da</language>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>1</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1424868107000</creationDate>
+  <parent>Macros.MapMacro.WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1525702990000</date>
+  <contentUpdateDate>1525702967000</contentUpdateDate>
+  <version>1.1</version>
+  <title>MapMacro Translations</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>plain/1.0</syntaxId>
+  <hidden>true</hidden>
+  <content>rendering.macro.map.name=Kort
+rendering.macro.map.description=Vis et interaktivt geografisk kort
+rendering.macro.map.parameter.location.name=Placering
+rendering.macro.map.parameter.location.description=Den placering, der skal vises på kortet
+rendering.macro.map.parameter.width.name=Bredde
+rendering.macro.map.parameter.width.description=Kortets bredde i pixel eller procent.
+rendering.macro.map.parameter.height.name=Højde
+rendering.macro.map.parameter.height.description=Kortets højde i pixel eller procent.
+rendering.macro.map.parameter.zoom.name=Zoom
+rendering.macro.map.parameter.zoom.description=Den zoom, kortet starter med. Standard er 15, hvilket svarer til omtrent en husblok.
+rendering.macro.map.parameter.errors.name=Fejl
+rendering.macro.map.parameter.errors.description=Vis en pop op-boks med den returnerede statuskode, når den er andet end "OK" (værdier: show (standard)/hide).
+rendering.macro.map.content.description=Oplysninger, der skal vises som forklaring til den viste placering.
+macroMap.apiKey.info=Hvis du vil bruge kortmakroen med Google Maps eller Mapbox, skal du have en {0}Google API-nøgle{1} eller et {2}Mapbox-adgangstoken{3}. Hvis du bruger standardbiblioteket (Leaflet) og standardfliseserveren (OpenStreetMap), kræves der ingen API-nøgle eller token.
+macroMap.apiKey.invalid=Der er ingen gyldig Google API-nøgle til denne makro. Gå til {0}afsnittet Kortmakro{1}.
+admin.mapmacro=Kortmakro
+</content>
+</xwikidoc>
